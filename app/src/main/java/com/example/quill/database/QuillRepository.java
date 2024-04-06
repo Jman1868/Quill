@@ -15,10 +15,32 @@ public class QuillRepository {
     private QuillDAO quillDAO;
     private ArrayList<Quill> allQuills;
 
-    public QuillRepository (Application application) {
+    private static QuillRepository repository;
+
+    private QuillRepository (Application application) {
         QuillDatabase db = QuillDatabase.getDatabase(application);
         this.quillDAO = db.quillDAO();
-        this.allQuills = this.quillDAO.getAllRecords();
+        this.allQuills = (ArrayList<Quill>) this.quillDAO.getAllRecords();
+    }
+
+    public static QuillRepository getRepository(Application application) {
+        if (repository != null) {
+            return repository;
+        }
+        Future<QuillRepository> future = QuillDatabase.databaseWriteExecutor.submit(
+                new Callable<QuillRepository>() {
+                    @Override
+                    public QuillRepository call() throws Exception {
+                        return new QuillRepository(application);
+                    }
+                }
+        );
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.i(MainActivity.TAG, "Problem getting QuillRepository, thread error.");
+        }
+        return null;
     }
 
     public ArrayList<Quill> getAllQuills() {
@@ -26,7 +48,7 @@ public class QuillRepository {
                 new Callable<ArrayList<Quill>>() {
                     @Override
                     public ArrayList<Quill> call() throws Exception {
-                        return quillDAO.getAllRecords();
+                        return (ArrayList<Quill>) quillDAO.getAllRecords();
                     }
                 }
         );

@@ -7,7 +7,7 @@ import androidx.room.Query;
 
 import com.example.quill.database.entities.Quill;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Dao
 public interface QuillDAO {
@@ -15,5 +15,5 @@ public interface QuillDAO {
     void insert(Quill quill);
 
     @Query("SELECT * FROM " + QuillDatabase.QUILL_TABLE)
-    ArrayList<Quill> getAllRecords();
+    List<Quill> getAllRecords();
 }
