@@ -7,6 +7,56 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+
+    <ImageView
+        android:id="@+id/topImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/wavyloginlandingpagetop"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/bottomImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/wavyloginlandingpagebottom"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Text on bottom image -->
+    <TextView
+        android:id="@+id/bottomImageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="Dont have an Account?"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/bottomImageView"
+        app:layout_constraintEnd_toEndOf="@id/bottomImageView"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@id/bottomImageView" />
+
+    <!-- Hyperlink TextView -->
+    <TextView
+        android:id="@+id/hyperlinkTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:textColor="@color/QuillHighlight"
+        android:textSize="16sp"
+        android:clickable="true"
+        app:layout_constraintTop_toBottomOf="@id/bottomImageTextView"
+        app:layout_constraintStart_toStartOf="@id/bottomImageView"
+        app:layout_constraintEnd_toEndOf="@id/bottomImageView"/>
+
+
+
     <TextView
         android:id="@+id/titleLoginTextView"
         android:layout_width="149dp"
@@ -17,7 +67,9 @@
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black"
+        />
 
     <TextView
         android:id="@+id/enterUsernameTextView"
