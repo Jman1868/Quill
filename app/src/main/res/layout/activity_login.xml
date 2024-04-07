@@ -155,7 +155,7 @@
 
     <!-- Hyperlink TextView -->
     <TextView
-        android:id="@+id/hyperlinkTextView"
+        android:id="@+id/bottomImageTextViewClickable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign up"

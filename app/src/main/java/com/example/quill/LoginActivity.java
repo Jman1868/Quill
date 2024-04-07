@@ -32,6 +32,17 @@ public class LoginActivity extends AppCompatActivity {
                 verifyUser();
             }
         });
+        
+        binding.bottomImageTextViewClickable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //TODO: Make this so that it switches to the sign up activity page
+                Toast.makeText(LoginActivity.this, "TEST", Toast.LENGTH_SHORT).show();
+            }
+        });
+        
+        
     }
 
     private void verifyUser() {
