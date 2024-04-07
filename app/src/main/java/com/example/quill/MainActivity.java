@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         loginUser();
 
         if (loggedInUserId == -1) {
-            Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
+            Intent intent = LandingPageActivity.landingpageIntentFactory(getApplicationContext());
             startActivity(intent);
         }
 

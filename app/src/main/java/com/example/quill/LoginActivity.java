@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //TODO: Make this so that it switches to the sign up activity page
-                Toast.makeText(LoginActivity.this, "TEST", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Sign up not implemented yet", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(v.getContext(), LandingPageActivity.class);
                 startActivity(intent);
             }

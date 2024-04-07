@@ -109,7 +109,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/passwordLoginEditText"
         android:textColor="@color/black"
-
+        android:textAllCaps="false"
         android:fontFamily="@font/abeezeeregular"
         android:backgroundTint="@color/QuillOrange"
         android:background="@drawable/rounded_button"
