@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.quill.MainActivity;
 import com.example.quill.database.entities.Quill;
+import com.example.quill.database.entities.User;
 
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
@@ -12,7 +13,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class QuillRepository {
-    private QuillDAO quillDAO;
+    private final QuillDAO quillDAO;
+    private final UserDAO userDAO;
     private ArrayList<Quill> allQuills;
 
     private static QuillRepository repository;
@@ -20,6 +22,7 @@ public class QuillRepository {
     private QuillRepository (Application application) {
         QuillDatabase db = QuillDatabase.getDatabase(application);
         this.quillDAO = db.quillDAO();
+        this.userDAO = db.userDAO();
         this.allQuills = (ArrayList<Quill>) this.quillDAO.getAllRecords();
     }
 
@@ -61,10 +64,17 @@ public class QuillRepository {
     }
 
     public void insertQuill(Quill quill) {
-        QuillDatabase.databaseWriteExecutor.execute(() -> {
+        QuillDatabase.databaseWriteExecutor.execute(() ->
+        {
             quillDAO.insert(quill);
         });
     }
 
+    public void insertUser(User... user) {
+        QuillDatabase.databaseWriteExecutor.execute(() ->
+        {
+            userDAO.insert(user);
+        });
+    }
 
 }

@@ -11,14 +11,16 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.quill.MainActivity;
 import com.example.quill.database.entities.Quill;
+import com.example.quill.database.entities.User;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Quill.class}, version = 1, exportSchema = false)
+@Database(entities = {Quill.class, User.class}, version = 1, exportSchema = false)
 public abstract class QuillDatabase extends RoomDatabase {
 
-    private static final String DATABASE_NAME = "Quill_database";
+    public static final String USER_TABLE = "usertable";
+    private static final String DATABASE_NAME = "Quilldatabase";
     public static final String QUILL_TABLE = "quillTable";
 
     private static volatile QuillDatabase INSTANCE;
@@ -26,32 +28,45 @@ public abstract class QuillDatabase extends RoomDatabase {
 
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    static QuillDatabase getDatabase(final Context context) {
-        if (INSTANCE == null) {
-            synchronized (QuillDatabase.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(
-                            context.getApplicationContext(),
-                            QuillDatabase.class,
-                                    DATABASE_NAME
-                            )
+    static QuillDatabase getDatabase(final Context context){
+
+        if(INSTANCE == null){
+            synchronized (QuillDatabase.class){
+                if(INSTANCE == null){
+                    INSTANCE= Room.databaseBuilder(
+                             context.getApplicationContext(),
+                             QuillDatabase.class,DATABASE_NAME)
                             .fallbackToDestructiveMigration()
                             .addCallback(addDefaultValues)
                             .build();
+
                 }
             }
         }
         return INSTANCE;
     }
 
-    private static final RoomDatabase.Callback addDefaultValues = new RoomDatabase.Callback() {
+    private static final RoomDatabase.Callback addDefaultValues = new RoomDatabase.Callback(){
         @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+        public void onCreate(@NonNull SupportSQLiteDatabase db){
             super.onCreate(db);
-            Log.i(MainActivity.TAG, "Database created!");
-            // TODO: add databaseWriteExecutor.execute(() -> {...}
+            Log.i(MainActivity.TAG,"DATABASE CREATED!");
+            databaseWriteExecutor.execute(() -> {
+                UserDAO dao = INSTANCE.userDAO();
+                dao.deleteAll();
+                // Create default users
+                User admin = new User("admin2", "admin2");
+                admin.setAdmin(true);
+                dao.insert(admin);
+
+                User testUser1 = new User("testuser1", "testuser1");
+                dao.insert(testUser1);
+            });
         }
     };
 
+
     public abstract QuillDAO quillDAO();
+
+    public abstract UserDAO userDAO();
 }

@@ -15,11 +15,13 @@ public class Quill {
     private String title;
     private String content;
     private String category;
+    private int userId;
 
-    public Quill(String title, String content, String category) {
+    public Quill(String title, String content, String category, int userId) {
         this.title = title;
         this.content = content;
         this.category = category;
+        this.userId = userId;
     }
 
     @Override
@@ -27,12 +29,12 @@ public class Quill {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Quill quill = (Quill) o;
-        return id == quill.id && Objects.equals(title, quill.title) && Objects.equals(content, quill.content) && Objects.equals(category, quill.category);
+        return id == quill.id && userId == quill.userId && Objects.equals(title, quill.title) && Objects.equals(content, quill.content) && Objects.equals(category, quill.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, content, category);
+        return Objects.hash(id, title, content, category, userId);
     }
 
     public int getId() {
@@ -65,5 +67,13 @@ public class Quill {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
