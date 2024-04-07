@@ -3,6 +3,8 @@ package com.example.quill.database;
 import android.app.Application;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+
 import com.example.quill.MainActivity;
 import com.example.quill.database.entities.Quill;
 import com.example.quill.database.entities.User;
@@ -77,4 +79,7 @@ public class QuillRepository {
         });
     }
 
+    public LiveData<User> getUserByUserName(String username) {
+        return userDAO.getUserByUserName(username);
+    }
 }

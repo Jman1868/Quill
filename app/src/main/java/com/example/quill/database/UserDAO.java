@@ -1,5 +1,6 @@
 package com.example.quill.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Dao
 public interface UserDAO {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(User... user);
 
@@ -19,8 +21,11 @@ public interface UserDAO {
     void delete(User user);
 
     @Query("SELECT * FROM " + QuillDatabase.USER_TABLE + " ORDER BY username")
-    List<User> getAllUsers();
+    LiveData<List<User>> getAllUsers();
 
     @Query("DELETE from " + QuillDatabase.USER_TABLE)
     void deleteAll();
+
+    @Query("SELECT * from " + QuillDatabase.USER_TABLE + " WHERE username == :username" )
+    LiveData<User> getUserByUserName(String username);
 }

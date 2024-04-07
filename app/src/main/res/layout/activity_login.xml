@@ -34,12 +34,13 @@
     <EditText
         android:id="@+id/userNameLoginEditText"
         android:layout_width="330dp"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:autofillHints="Please enter user name"
         android:hint="@string/username"
         android:inputType="text"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterUsernameTextView" />
 
@@ -58,7 +59,7 @@
     <EditText
         android:id="@+id/passwordLoginEditText"
         android:layout_width="330dp"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:autofillHints="Please enter user name"
         android:hint="@string/password"
         android:inputType="textPassword"
