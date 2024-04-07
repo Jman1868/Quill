@@ -6,13 +6,111 @@
     android:layout_height="match_parent"
     tools:context=".LandingPageActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
+    <ImageView
+        android:id="@+id/landingpagetopImgBg"
+        android:layout_width="422dp"
+        android:layout_height="511dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/wavylandingpagetop" />
+
+    <ImageView
+        android:id="@+id/landingpagebottomImgBg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="364dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/wavylandingpagebottom" />
+
+    <ImageView
+        android:id="@+id/landingpageLogo"
+        android:layout_width="43dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/landingpageTitle"
+        android:layout_width="147dp"
+        android:layout_height="44dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="96dp"
+        android:fontFamily="@font/abeezeeregular"
+        android:paddingStart="15dp"
+        android:text="@string/quill"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/landingpageSubText"
+        android:layout_width="189dp"
+        android:layout_height="51dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/abeezeeitalic"
+
+        android:text="@string/subtextInfo"
+        android:textColor="@color/black"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.63"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/landingpageTitle" />
+
+    <Button
+        android:id="@+id/landingpageSignUp"
+        android:layout_width="230dp"
+        android:layout_height="75dp"
+        android:background="@drawable/rounded_button"
+
+        android:backgroundTint="@color/QuillOrange"
+        android:fontFamily="@font/abeezeeregular"
+        android:text="@string/sign_up"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.551" />
+
+    <Button
+        android:id="@+id/landingpageLogin"
+        android:layout_width="175dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="@color/QuillBeige"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/abeezeeregular"
+        android:text="@string/login"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.623" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
