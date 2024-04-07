@@ -4,11 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.quill.databinding.ActivityLandingPageBinding;
+import com.example.quill.databinding.ActivityLoginBinding;
+
 public class LandingPageActivity extends AppCompatActivity {
 
+    private ActivityLandingPageBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_landing_page);
+        binding = ActivityLandingPageBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
     }
 }
