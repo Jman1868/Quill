@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
             else {
-                toastMaker(String.format("%s is not a valid username.", username));
+                toastMaker(String.format("%s does not exist.", username));
                 binding.userNameLoginEditText.setSelectAllOnFocus(true);
             }
         });
