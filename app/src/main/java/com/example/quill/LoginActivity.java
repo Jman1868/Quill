@@ -63,7 +63,6 @@ public class LoginActivity extends AppCompatActivity {
                 else {
                     toastMaker("Invalid password");
                     binding.passwordLoginEditText.setSelectAllOnFocus(true);
-//                    binding.passwordLoginEditText.setSelection(0);
                 }
             }
             else {
