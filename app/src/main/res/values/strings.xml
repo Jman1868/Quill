@@ -3,9 +3,14 @@
     <string name="welcome">Welcome</string>
     <string name="user">User</string>
     <string name="your_list">Your List</string>
-    <string name="log_in">Log in</string>
+    <string name="log_in">Login</string>
     <string name="enter_your_user_name">Enter your User Name</string>
     <string name="username">Enter User Name</string>
     <string name="enter_your_password">Enter your Password</string>
     <string name="password">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="subtextInfo">Harmonize Your Thoughts, Inspire Your Journey</string>
+    <string name="quill">Quill</string>
+    <string name="dont_have_an_account">Dont have an Account?</string>
 </resources>

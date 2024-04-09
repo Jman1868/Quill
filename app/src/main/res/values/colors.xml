@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="QuillOrange">#FFCF56</color>
+    <color name="QuillBeige">#EDEAD0</color>
+    <color name="QuillHighlight">#3AB795</color>
+    <color name="QuillRed">#F87878</color>
+
 </resources>
