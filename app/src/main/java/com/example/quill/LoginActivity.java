@@ -2,6 +2,7 @@ package com.example.quill;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -36,10 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.bottomImageTextViewClickable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //TODO: Make this so that it switches to the sign up activity page
-                Toast.makeText(LoginActivity.this, "Sign up not implemented yet", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(v.getContext(), LandingPageActivity.class);
+                Intent intent = SignupActivity.signupIntentFactory(getApplicationContext());
                 startActivity(intent);
             }
         });
@@ -64,12 +62,12 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else {
                     toastMaker("Invalid password");
-                    binding.passwordLoginEditText.setSelection(0);
+                    binding.passwordLoginEditText.setSelectAllOnFocus(true);
                 }
             }
             else {
-                toastMaker(String.format("%s is not a valid username.", username));
-                binding.userNameLoginEditText.setSelection(0);
+                toastMaker(String.format("%s does not exist.", username));
+                binding.userNameLoginEditText.setSelectAllOnFocus(true);
             }
         });
     }

@@ -16,4 +16,7 @@ public interface QuillDAO {
 
     @Query("SELECT * FROM " + QuillDatabase.QUILL_TABLE)
     List<Quill> getAllRecords();
+
+    @Query("SELECT * FROM " + QuillDatabase.QUILL_TABLE + " WHERE userId = :loggedInUserId")
+    List<Quill> getRecordsbyUserId(int loggedInUserId);
 }
