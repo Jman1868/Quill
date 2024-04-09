@@ -129,13 +129,13 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.navigation_explore) {
 
-                Intent intent = new Intent(getApplicationContext(), ExploreActivity.class);
+                Intent intent = ExploreActivity.exploreIntentFactory(getApplicationContext());
                 startActivity(intent);
             }
 
             if (item.getItemId() == R.id.navigation_account) {
 
-                Intent intent = new Intent(getApplicationContext(), AccountActivity.class);
+                Intent intent = AccountActivity.accountIntentFactory(getApplicationContext());
                 startActivity(intent);
             }
             return false;
