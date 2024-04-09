@@ -13,4 +13,7 @@
     <string name="subtextInfo">Harmonize Your Thoughts, Inspire Your Journey</string>
     <string name="quill">Quill</string>
     <string name="dont_have_an_account">Dont have an Account?</string>
+    <string name="log_out">Log out</string>
+    <string name="preference_file_key">quillPreferenceFileName</string>
+    <string name="preference_userId_key">quillPreferenceUserIdKey</string>
 </resources>

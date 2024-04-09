@@ -1,11 +1,15 @@
 package com.example.quill;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.example.quill.database.QuillRepository;
 import com.example.quill.database.entities.User;
@@ -13,6 +17,8 @@ import com.example.quill.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private static final String MAIN_ACTIVITY_USER_ID = "com.example.quill.MAIN_ACTIVITY_USER_ID";
+    static final String SHARED_PREFERENCE_USERID_KEY = "com.example.quill.SHARED_PREFERENCE_USERID_KEY";
+    static final String SAVED_INSTANCE_STATE_USERID_KEY = "com.example.quill.SAVED_INSTANCE_STATE_USERID_KEY";
     private static final int LOGGED_OUT = -1;
     ActivityMainBinding binding;
     private QuillRepository repository;
@@ -28,28 +34,82 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        loginUser();
+        // Initialize database before asking user to log in/sign up
+        repository = QuillRepository.getRepository(getApplication());
+
+        loginUser(savedInstanceState);
 
         if (loggedInUserId == -1) {
             Intent intent = LandingPageActivity.landingpageIntentFactory(getApplicationContext());
             startActivity(intent);
         }
 
-        // Create repository for databases
-        repository = QuillRepository.getRepository(getApplication());
+        updateSharedPreference();
+
+        // Set username to current user name
+        LiveData<User> userObserver = repository.getUserByUserId(loggedInUserId);
+        userObserver.observe(this, user -> {
+            this.user=user;
+            if (this.user != null) {
+                binding.homePageUsernameTextView.setText(user.getUsername());
+            }
+        });
+
+        binding.activityMainLogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
 
     }
 
-    private void loginUser() {
+    private void loginUser(Bundle savedInstanceState) {
         // Check shared preference for logged in user
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key),
+                Context.MODE_PRIVATE);
 
-        // Check intent for logged in user
-        loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
-        if (loggedInUserId == LOGGED_OUT) {
+        loggedInUserId = sharedPreferences.getInt(getString(R.string.preference_userId_key),LOGGED_OUT);
+
+        if(loggedInUserId == LOGGED_OUT & savedInstanceState != null && savedInstanceState.containsKey(SAVED_INSTANCE_STATE_USERID_KEY)){
+            loggedInUserId = savedInstanceState.getInt(SAVED_INSTANCE_STATE_USERID_KEY,LOGGED_OUT);
+        }
+
+        if(loggedInUserId == LOGGED_OUT){
+            loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID,LOGGED_OUT);
+        }
+        if(loggedInUserId == LOGGED_OUT){
             return;
         }
 
+        // Check intent for logged in user
+//        loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putInt(SAVED_INSTANCE_STATE_USERID_KEY,loggedInUserId);
+        updateSharedPreference();
+
+    }
+
+    private void updateSharedPreference(){
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key),
+                Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
+        sharedPrefEditor.putInt(getString(R.string.preference_userId_key),loggedInUserId);
+        sharedPrefEditor.apply();
+    }
+
+    private void logout() {
+        loggedInUserId = LOGGED_OUT;
+        updateSharedPreference();
+        getIntent().putExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
+
+        startActivity(LandingPageActivity.landingpageIntentFactory(getApplicationContext()));
     }
 
     static Intent mainActivityIntentFactory(Context context, int userId) {

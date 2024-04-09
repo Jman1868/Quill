@@ -28,4 +28,7 @@ public interface UserDAO {
 
     @Query("SELECT * from " + QuillDatabase.USER_TABLE + " WHERE username == :username" )
     LiveData<User> getUserByUserName(String username);
+
+    @Query("SELECT * FROM " + QuillDatabase.USER_TABLE + " WHERE id == :userId ")
+    LiveData<User> getUserByUserId(int userId);
 }
