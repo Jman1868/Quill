@@ -1,0 +1,6 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/navigation_home" android:title="Home" android:icon="@drawable/iconhomeoutline"/>
+    <item android:id="@+id/navigation_explore" android:title="Second" android:icon="@drawable/iconcompassoutline"/>
+    <item android:id="@+id/navigation_account" android:title="Third" android:icon="@drawable/iconpersonoutline"/>
+</menu>
