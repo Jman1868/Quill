@@ -64,7 +64,7 @@ public class SignupActivity extends AppCompatActivity {
             return;
         }
 
-        // TODO: Display message if username is taken
+        // TODO: Display message if username is taken and update username on MainActivity
         LiveData<User> userObserver = repository.getUserByUserName(username);
         userObserver.observe(this, user -> {
             if (user == null) {
