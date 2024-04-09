@@ -14,6 +14,7 @@ import android.view.View;
 import com.example.quill.database.QuillRepository;
 import com.example.quill.database.entities.User;
 import com.example.quill.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String MAIN_ACTIVITY_USER_ID = "com.example.quill.MAIN_ACTIVITY_USER_ID";
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         repository = QuillRepository.getRepository(getApplication());
 
         loginUser(savedInstanceState);
+
+        handleNav();
 
         if (loggedInUserId == -1) {
             Intent intent = LandingPageActivity.landingpageIntentFactory(getApplicationContext());
@@ -117,5 +120,25 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra(MAIN_ACTIVITY_USER_ID, userId);
         return intent;
+    }
+
+    void handleNav() {
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.navigation_explore) {
+
+                Intent intent = new Intent(getApplicationContext(), ExploreActivity.class);
+                startActivity(intent);
+            }
+
+            if (item.getItemId() == R.id.navigation_account) {
+
+                Intent intent = new Intent(getApplicationContext(), AccountActivity.class);
+                startActivity(intent);
+            }
+            return false;
+        });
     }
 }
