@@ -3,12 +3,9 @@ package com.example.quill;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.quill.databinding.ActivitySignupBinding;
 
@@ -21,6 +18,28 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySignupBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.createAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createUser();
+            }
+        });
+
+        binding.bottomImageTextViewClickableLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void createUser() {
+        String username = binding.userNameSignupEditText.getText().toString();
+        String password = binding.passwordSignupEditText.getText().toString();
+
+
     }
 
     static Intent signupIntentFactory (Context context) {

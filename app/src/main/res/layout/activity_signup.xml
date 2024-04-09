@@ -39,7 +39,7 @@
         />
 
     <EditText
-        android:id="@+id/userNameLoginEditText"
+        android:id="@+id/userNameSignupEditText"
         android:layout_width="330dp"
         android:layout_height="60dp"
         android:autofillHints="Please enter user name"
@@ -70,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.224"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userNameLoginEditText"
+        app:layout_constraintTop_toBottomOf="@id/userNameSignupEditText"
 
         android:fontFamily="@font/abeezeeitalic"
         android:paddingStart="20dp"
@@ -78,7 +78,7 @@
         />
 
     <EditText
-        android:id="@+id/passwordLoginEditText"
+        android:id="@+id/passwordSignupEditText"
         android:layout_width="330dp"
         android:layout_height="60dp"
         android:autofillHints="Please enter user name"
@@ -98,7 +98,7 @@
         />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/createAccountButton"
         android:layout_width="330dp"
         android:layout_height="80dp"
         android:layout_marginTop="110dp"
@@ -106,7 +106,7 @@
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordLoginEditText"
+        app:layout_constraintTop_toBottomOf="@id/passwordSignupEditText"
         android:textColor="@color/black"
         android:textAllCaps="false"
         android:fontFamily="@font/abeezeeregular"
@@ -154,7 +154,7 @@
 
     <!-- Hyperlink TextView -->
     <TextView
-        android:id="@+id/bottomImageTextViewClickable"
+        android:id="@+id/bottomImageTextViewClickableLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login"

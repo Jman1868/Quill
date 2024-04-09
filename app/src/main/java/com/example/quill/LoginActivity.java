@@ -37,10 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.bottomImageTextViewClickable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //TODO: Make this so that it switches to the sign up activity page
-                Toast.makeText(LoginActivity.this, "Sign up not implemented yet", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(v.getContext(), LandingPageActivity.class);
+                Intent intent = SignupActivity.signupIntentFactory(getApplicationContext());
                 startActivity(intent);
             }
         });
