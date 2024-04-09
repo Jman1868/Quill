@@ -31,8 +31,8 @@ public class LandingPageActivity extends AppCompatActivity {
         binding.landingpageSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Implement the sign up activity and switch to it when this button is pressed
-                Toast.makeText(LandingPageActivity.this, "Sign up not implemented yet", Toast.LENGTH_SHORT).show();
+                Intent intent = SignupActivity.signupIntentFactory(getApplicationContext());
+                startActivity(intent);
             }
         });
 

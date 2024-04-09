@@ -8,7 +8,7 @@
     <string name="username">Enter User Name</string>
     <string name="enter_your_password">Enter your Password</string>
     <string name="password">Enter Password</string>
-    <string name="login">Login</string>
+    <string name="login">Log in</string>
     <string name="sign_up">Sign Up</string>
     <string name="subtextInfo">Harmonize Your Thoughts, Inspire Your Journey</string>
     <string name="quill">Quill</string>
@@ -16,4 +16,8 @@
     <string name="log_out">Log out</string>
     <string name="preference_file_key">quillPreferenceFileName</string>
     <string name="preference_userId_key">quillPreferenceUserIdKey</string>
+    <string name="enter_a_user_name">Enter a User Name</string>
+    <string name="enter_a_password">Enter a Password</string>
+    <string name="have_an_account">Have an Account?</string>
+    <string name="create_account">Create Account</string>
 </resources>

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Quill"
         tools:targetApi="31">
         <activity
+            android:name=".SignupActivity"
+            android:exported="false" />
+        <activity
             android:name=".LandingPageActivity"
             android:exported="false" />
         <activity
