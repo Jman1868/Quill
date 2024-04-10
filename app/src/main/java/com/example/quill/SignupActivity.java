@@ -70,8 +70,11 @@ public class SignupActivity extends AppCompatActivity {
             if (user == null) {
                 User newUser = new User(username, password);
                 repository.insertUser(newUser);
-                Intent intent = MainActivity.mainActivityIntentFactory(getApplicationContext(), newUser.getId());
+                Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
                 startActivity(intent);
+                toastMaker("Account was successfully created");
+            } else {
+                toastMaker("User name is already taken");
             }
         });
 
