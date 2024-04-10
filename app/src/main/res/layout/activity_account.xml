@@ -6,6 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".AccountActivity">
 
+    <ImageView
+        android:id="@+id/accountbgimgtop"
+        android:layout_width="417dp"
+        android:layout_height="354dp"
+        android:layout_marginTop="-65dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/accountpagewavytop" />
+
+    <ImageView
+        android:id="@+id/accountboximg"
+        android:layout_width="358dp"
+        android:layout_height="338dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.798"
+        app:srcCompat="@drawable/accountpagebox" />
+
     <TextView
         android:id="@+id/titleAccountPageTextView"
         android:layout_width="276dp"
@@ -25,7 +50,7 @@
         android:id="@+id/accountPageSearchUsernameEditText"
         android:layout_width="330dp"
         android:layout_height="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="108dp"
         android:autofillHints="Enter User Name"
         android:background="@drawable/edit_text_border"
         android:fontFamily="@font/abeezeeregular"
@@ -132,4 +157,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.998"
         app:menu="@menu/navbar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
