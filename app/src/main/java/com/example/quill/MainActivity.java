@@ -58,14 +58,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        binding.activityMainLogoutButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                logout();
-//
-//            }
-//        });
-
     }
 
     private void loginUser(Bundle savedInstanceState) {
@@ -107,14 +99,6 @@ public class MainActivity extends AppCompatActivity {
         sharedPrefEditor.putInt(getString(R.string.preference_userId_key),loggedInUserId);
         sharedPrefEditor.apply();
     }
-
-//    private void logout() {
-//        loggedInUserId = LOGGED_OUT;
-//        updateSharedPreference();
-//        getIntent().putExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
-//
-//        startActivity(LandingPageActivity.landingpageIntentFactory(getApplicationContext()));
-//    }
 
     static Intent mainActivityIntentFactory(Context context, int userId) {
         Intent intent = new Intent(context, MainActivity.class);

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.quill.database.QuillRepository;
 import com.example.quill.database.entities.User;
@@ -39,7 +40,7 @@ public class AccountActivity extends AppCompatActivity {
                 Context.MODE_PRIVATE);
         loggedInUserId = sharedPreferences.getInt(getString(R.string.preference_userId_key),LOGGED_OUT);
 
-        // Check to see if admin to show delete user button
+        // Check to see if user is an admin to show delete user button
         LiveData<User> userObserver = repository.getUserByUserId(loggedInUserId);
         userObserver.observe(this, user -> {
             this.user=user;
@@ -56,6 +57,14 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
+        // Delete user button
+        binding.accountPageDeleteUserButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteUserButton();
+            }
+        });
+
         handleNav();
     }
 
@@ -69,6 +78,7 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     private void logout() {
+        // Set loggedInUserId to logged out and update shared preferences
         loggedInUserId = LOGGED_OUT;
         updateSharedPreference();
         getIntent().putExtra(MainActivity.MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
@@ -77,6 +87,7 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     private void showLogoutDialog() {
+        // Show dialog to check to see if user wants to log out
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AccountActivity.this);
         final AlertDialog alertDialog = alertBuilder.create();
         alertBuilder.setMessage("Logout?");
@@ -85,6 +96,59 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 logout();
+            }
+        });
+        alertBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertBuilder.create().show();
+    }
+
+    private void deleteUserButton() {
+        String deleteUsername = binding.accountPageSearchUsernameEditText.getText().toString();
+        // If username edit text is empty display a message to enter user name
+        if (deleteUsername.isEmpty()) {
+            Toast.makeText(this, "Please enter a user name", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Check database for username to delete and show the delete user dialog
+        // TODO: Fix toast message
+        LiveData<User> userObserver = repository.getUserByUserName(deleteUsername);
+        userObserver.observe(this, user -> {
+            if (user != null) {
+                showDeleteUserDialog();
+            } else {
+                Toast.makeText(this, String.format("%s does not exist", deleteUsername), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void deleteUser() {
+        // Check database for username and delete user
+        String deleteUsername = binding.accountPageSearchUsernameEditText.getText().toString();
+        LiveData<User> userObserver = repository.getUserByUserName(deleteUsername);
+        userObserver.observe(this, user -> {
+            if (user != null) {
+                repository.deleteUser(user);
+            }
+
+        });
+    }
+
+    private void showDeleteUserDialog() {
+        // Show dialog to check to see if user wants delete user
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AccountActivity.this);
+        final AlertDialog alertDialog = alertBuilder.create();
+        alertBuilder.setMessage("Delete User?");
+
+        alertBuilder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                deleteUser();
             }
         });
         alertBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
