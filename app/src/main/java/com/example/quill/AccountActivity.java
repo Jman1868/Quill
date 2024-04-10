@@ -116,13 +116,16 @@ public class AccountActivity extends AppCompatActivity {
         }
 
         // Check database for username to delete and show the delete user dialog
-        // TODO: Fix toast message
         LiveData<User> userObserver = repository.getUserByUserName(deleteUsername);
         userObserver.observe(this, user -> {
             if (user != null) {
                 showDeleteUserDialog();
+
+                // If user exists, we're done here, so remove the observer
+                userObserver.removeObservers(this);
             } else {
                 Toast.makeText(this, String.format("%s does not exist", deleteUsername), Toast.LENGTH_SHORT).show();
+                userObserver.removeObservers(this);
             }
         });
     }
@@ -148,7 +151,9 @@ public class AccountActivity extends AppCompatActivity {
         alertBuilder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(AccountActivity.this, "Successfully deleted user", Toast.LENGTH_SHORT).show();
                 deleteUser();
+
             }
         });
         alertBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
