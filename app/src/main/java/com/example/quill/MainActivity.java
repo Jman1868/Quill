@@ -17,7 +17,7 @@ import com.example.quill.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String MAIN_ACTIVITY_USER_ID = "com.example.quill.MAIN_ACTIVITY_USER_ID";
+    static final String MAIN_ACTIVITY_USER_ID = "com.example.quill.MAIN_ACTIVITY_USER_ID";
     static final String SHARED_PREFERENCE_USERID_KEY = "com.example.quill.SHARED_PREFERENCE_USERID_KEY";
     static final String SAVED_INSTANCE_STATE_USERID_KEY = "com.example.quill.SAVED_INSTANCE_STATE_USERID_KEY";
     private static final int LOGGED_OUT = -1;
@@ -55,14 +55,6 @@ public class MainActivity extends AppCompatActivity {
             this.user=user;
             if (this.user != null) {
                 binding.homePageUsernameTextView.setText(user.getUsername());
-            }
-        });
-
-        binding.activityMainLogoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-
             }
         });
 
@@ -106,14 +98,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
         sharedPrefEditor.putInt(getString(R.string.preference_userId_key),loggedInUserId);
         sharedPrefEditor.apply();
-    }
-
-    private void logout() {
-        loggedInUserId = LOGGED_OUT;
-        updateSharedPreference();
-        getIntent().putExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
-
-        startActivity(LandingPageActivity.landingpageIntentFactory(getApplicationContext()));
     }
 
     static Intent mainActivityIntentFactory(Context context, int userId) {

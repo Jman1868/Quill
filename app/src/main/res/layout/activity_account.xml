@@ -6,16 +6,136 @@
     android:layout_height="match_parent"
     tools:context=".AccountActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Accountpage"
+    <ImageView
+        android:id="@+id/accountbgimgtop"
+        android:layout_width="417dp"
+        android:layout_height="354dp"
+        android:layout_marginTop="-65dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/accountpagewavytop" />
+
+    <ImageView
+        android:id="@+id/accountboximg"
+        android:layout_width="358dp"
+        android:layout_height="338dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountPageSearchUsernameEditText"
+        app:srcCompat="@drawable/accountpagebox" />
+
+    <TextView
+        android:id="@+id/titleAccountPageTextView"
+        android:layout_width="276dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/abeezeeregular"
+        android:gravity="center"
+        android:text="@string/account"
+        android:textColor="@color/black"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <EditText
+        android:id="@+id/accountPageSearchUsernameEditText"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="108dp"
+        android:autofillHints="Enter User Name"
+        android:background="@drawable/edit_text_border"
+        android:fontFamily="@font/abeezeeregular"
+        android:hint="@string/search_user_name"
+        android:inputType="text"
+        android:paddingStart="20dp"
+
+
+        android:paddingEnd="20dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleAccountPageTextView" />
+
+    <Button
+        android:id="@+id/accountPageUserIdButton"
+        android:layout_width="197dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/rounded_button"
+
+        android:backgroundTint="@color/QuillBeige"
+        android:fontFamily="@font/abeezeeregular"
+        android:text="@string/user_id"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountPageSearchUsernameEditText" />
+
+    <Button
+        android:id="@+id/accountPageStatsButton"
+        android:layout_width="197dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_button"
+
+        android:backgroundTint="@color/QuillBeige"
+        android:fontFamily="@font/abeezeeregular"
+        android:text="@string/stats"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountPageUserIdButton" />
+
+    <Button
+        android:id="@+id/accountPageLogoutButton"
+        android:layout_width="197dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_button"
+
+        android:backgroundTint="@color/QuillBeige"
+        android:fontFamily="@font/abeezeeregular"
+        android:text="@string/log_out"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountPageStatsButton" />
+
+    <Button
+        android:id="@+id/accountPageDeleteUserButton"
+        android:layout_width="197dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_button"
+        android:visibility="invisible"
+
+        android:backgroundTint="@color/QuillRed"
+        android:fontFamily="@font/abeezeeregular"
+        android:text="@string/delete_user"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountPageLogoutButton" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -35,4 +155,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.998"
         app:menu="@menu/navbar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

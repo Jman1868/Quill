@@ -20,4 +20,10 @@
     <string name="enter_a_password">Enter a Password</string>
     <string name="have_an_account">Have an Account?</string>
     <string name="create_account">Create Account</string>
+    <string name="account">Account</string>
+    <string name="search_user_id">Search User ID</string>
+    <string name="user_id">User Id</string>
+    <string name="stats">Stats</string>
+    <string name="delete_user">Delete User</string>
+    <string name="search_user_name">Search User Name</string>
 </resources>

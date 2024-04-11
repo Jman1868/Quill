@@ -79,6 +79,13 @@ public class QuillRepository {
         });
     }
 
+    public void deleteUser(User user) {
+        QuillDatabase.databaseWriteExecutor.execute(() ->
+        {
+            userDAO.delete(user);
+        });
+    }
+
     public LiveData<User> getUserByUserName(String username) {
         return userDAO.getUserByUserName(username);
     }

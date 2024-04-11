@@ -64,14 +64,18 @@ public class SignupActivity extends AppCompatActivity {
             return;
         }
 
-        // TODO: Display message if username is taken and update username on MainActivity
         LiveData<User> userObserver = repository.getUserByUserName(username);
         userObserver.observe(this, user -> {
             if (user == null) {
                 User newUser = new User(username, password);
                 repository.insertUser(newUser);
-                Intent intent = MainActivity.mainActivityIntentFactory(getApplicationContext(), newUser.getId());
+                Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
                 startActivity(intent);
+                toastMaker("Account was successfully created");
+                userObserver.removeObservers(this);
+            } else {
+                userObserver.removeObservers(this);
+                toastMaker("User name is already taken");
             }
         });
 
