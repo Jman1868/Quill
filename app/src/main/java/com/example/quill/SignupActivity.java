@@ -64,7 +64,6 @@ public class SignupActivity extends AppCompatActivity {
             return;
         }
 
-        // TODO: Fix toast message if username is taken
         LiveData<User> userObserver = repository.getUserByUserName(username);
         userObserver.observe(this, user -> {
             if (user == null) {
@@ -73,7 +72,9 @@ public class SignupActivity extends AppCompatActivity {
                 Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
                 startActivity(intent);
                 toastMaker("Account was successfully created");
+                userObserver.removeObservers(this);
             } else {
+                userObserver.removeObservers(this);
                 toastMaker("User name is already taken");
             }
         });

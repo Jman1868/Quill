@@ -23,12 +23,10 @@
         android:id="@+id/accountboximg"
         android:layout_width="358dp"
         android:layout_height="338dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.798"
+        app:layout_constraintTop_toBottomOf="@+id/accountPageSearchUsernameEditText"
         app:srcCompat="@drawable/accountpagebox" />
 
     <TextView
