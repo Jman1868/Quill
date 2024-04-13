@@ -67,6 +67,9 @@ public abstract class QuillDatabase extends RoomDatabase {
                 Quill defaultItem = new Quill("A generic Title", "Some generic text", "A genre");
                 quillDAO.insert(defaultItem);
 
+                Quill defaultSecondItem = new Quill("Another generic Title", "Some more generic text", "Sports");
+                quillDAO.insert(defaultSecondItem);
+
             });
         }
     };
