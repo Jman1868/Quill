@@ -23,13 +23,13 @@
 
             <TextView
                 android:id="@+id/quillItemTextView"
-                android:layout_width="81dp"
-                android:layout_height="43dp"
-
-
+                android:layout_width="139dp"
+                android:layout_height="64dp"
+                android:fontFamily="@font/abeezeeregular"
+                android:textSize="20sp"
                 android:text="TextView"
-
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
