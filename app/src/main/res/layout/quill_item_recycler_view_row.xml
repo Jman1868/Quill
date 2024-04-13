@@ -21,7 +21,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/quillItemTextView"
                 android:layout_width="81dp"
                 android:layout_height="43dp"
 

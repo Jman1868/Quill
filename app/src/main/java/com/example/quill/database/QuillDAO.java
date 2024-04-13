@@ -1,5 +1,6 @@
 package com.example.quill.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -17,7 +18,9 @@ public interface QuillDAO {
     @Query("SELECT * FROM " + QuillDatabase.QUILL_TABLE)
     List<Quill> getAllRecords();
 
-    //Todo: Decide to use id or not. Or maybe migrate to the liked item entity
+    @Query("SELECT * FROM " + QuillDatabase.QUILL_TABLE)
+    LiveData<List<Quill>> getAllQuill();
+
 //    @Query("SELECT * FROM " + QuillDatabase.QUILL_TABLE + " WHERE userId = :loggedInUserId")
 //    List<Quill> getRecordsbyUserId(int loggedInUserId);
 }

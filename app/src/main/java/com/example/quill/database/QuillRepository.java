@@ -10,6 +10,7 @@ import com.example.quill.database.entities.Quill;
 import com.example.quill.database.entities.User;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -47,6 +48,11 @@ public class QuillRepository {
         }
         return null;
     }
+
+    public LiveData<List<Quill>> getAllQuillsLiveData() {
+        return quillDAO.getAllQuill();
+    }
+
 
     public ArrayList<Quill> getAllQuills() {
         Future<ArrayList<Quill>> future = QuillDatabase.databaseWriteExecutor.submit(
