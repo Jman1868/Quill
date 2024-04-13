@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">Quill</string>
+    <string name="welcome">Welcome</string>
+    <string name="user">User</string>
+    <string name="your_list">Your List</string>
+    <string name="log_in">Login</string>
+    <string name="enter_your_user_name">Enter your User Name</string>
+    <string name="username">Enter User Name</string>
+    <string name="enter_your_password">Enter your Password</string>
+    <string name="password">Enter Password</string>
+    <string name="login">Log in</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="subtextInfo">Harmonize Your Thoughts, Inspire Your Journey</string>
+    <string name="quill">Quill</string>
+    <string name="dont_have_an_account">Dont have an Account?</string>
+    <string name="log_out">Log out</string>
+    <string name="preference_file_key">quillPreferenceFileName</string>
+    <string name="preference_userId_key">quillPreferenceUserIdKey</string>
+    <string name="enter_a_user_name">Enter a User Name</string>
+    <string name="enter_a_password">Enter a Password</string>
+    <string name="have_an_account">Have an Account?</string>
+    <string name="create_account">Create Account</string>
+    <string name="account">Account</string>
+    <string name="search_user_id">Search User ID</string>
+    <string name="user_id">User Id</string>
+    <string name="stats">Stats</string>
+    <string name="delete_user">Delete User</string>
+    <string name="search_user_name">Search User Name</string>
 </resources>
