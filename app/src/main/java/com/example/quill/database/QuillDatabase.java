@@ -53,6 +53,7 @@ public abstract class QuillDatabase extends RoomDatabase {
             Log.i(MainActivity.TAG,"DATABASE CREATED!");
             databaseWriteExecutor.execute(() -> {
                 UserDAO dao = INSTANCE.userDAO();
+                QuillDAO quillDAO = INSTANCE.quillDAO();
                 dao.deleteAll();
                 // Create default users
                 User admin = new User("admin2", "admin2");
@@ -61,6 +62,11 @@ public abstract class QuillDatabase extends RoomDatabase {
 
                 User testUser1 = new User("testuser1", "testuser1");
                 dao.insert(testUser1);
+
+                //Create Default Quill Item
+                Quill defaultItem = new Quill("A generic Title", "Some generic text", "A genre");
+                quillDAO.insert(defaultItem);
+
             });
         }
     };

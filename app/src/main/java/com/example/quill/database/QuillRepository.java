@@ -94,22 +94,23 @@ public class QuillRepository {
         return userDAO.getUserByUserId(userId);
     }
 
-    public ArrayList<Quill> getAllLogsByUserId(int loggedInUserId) {
-        //Basically a Javascript promise
-        Future<ArrayList<Quill>> future = QuillDatabase.databaseWriteExecutor.submit(
-                new Callable<ArrayList<Quill>>() {
-                    @Override
-                    public ArrayList<Quill> call() throws Exception {
-                        return (ArrayList<Quill>) quillDAO.getRecordsbyUserId(loggedInUserId);
-                    }
-                }
-        );
-        try {
-            return future.get();
-        }catch (InterruptedException | ExecutionException e){
-            e.printStackTrace();
-            Log.i(MainActivity.TAG,"Problem when getting all GymLogs in the repository");
-        }
-        return null;
-    }
+
+//    public ArrayList<Quill> getAllLogsByUserId(int loggedInUserId) {
+//        //Basically a Javascript promise
+//        Future<ArrayList<Quill>> future = QuillDatabase.databaseWriteExecutor.submit(
+//                new Callable<ArrayList<Quill>>() {
+//                    @Override
+//                    public ArrayList<Quill> call() throws Exception {
+//                        return (ArrayList<Quill>) quillDAO.getRecordsbyUserId(loggedInUserId);
+//                    }
+//                }
+//        );
+//        try {
+//            return future.get();
+//        }catch (InterruptedException | ExecutionException e){
+//            e.printStackTrace();
+//            Log.i(MainActivity.TAG,"Problem when getting all GymLogs in the repository");
+//        }
+//        return null;
+//    }
 }
