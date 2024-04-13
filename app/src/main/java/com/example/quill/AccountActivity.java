@@ -65,6 +65,15 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
+
+        binding.accountPageUserIdButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(AccountActivity.this, "User Id is: "+ user.getId(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         handleNav();
     }
 
