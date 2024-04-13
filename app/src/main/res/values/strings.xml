@@ -26,4 +26,5 @@
     <string name="stats">Stats</string>
     <string name="delete_user">Delete User</string>
     <string name="search_user_name">Search User Name</string>
+    <string name="explore">Explore</string>
 </resources>
