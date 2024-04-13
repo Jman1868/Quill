@@ -17,7 +17,9 @@
             android:exported="false" />
         <activity
             android:name=".ExploreActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"
+            />
         <activity
             android:name=".SignupActivity"
             android:exported="false" />

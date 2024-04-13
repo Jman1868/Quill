@@ -7,10 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.quill.database.QuillRepository;
 import com.example.quill.database.entities.Quill;
+import com.example.quill.database.entities.User;
 import com.example.quill.databinding.ActivityExploreBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -21,6 +25,11 @@ public class ExploreActivity extends AppCompatActivity {
 
     ActivityExploreBinding binding;
     private Quill_Item_RecyclerViewAdapter adapter;
+
+    //Todo: See if we can just use the logged out value from main instead
+    private static final int LOGGED_OUT = -1;
+    private int loggedInUserId = -1;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +47,31 @@ public class ExploreActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         });
 
+
+        //Button visibility
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key),
+                Context.MODE_PRIVATE);
+        loggedInUserId = sharedPreferences.getInt(getString(R.string.preference_userId_key),LOGGED_OUT);
+
+        LiveData<User> userObserver = repository.getUserByUserId(loggedInUserId);
+        userObserver.observe(this, user -> {
+            this.user=user;
+            if (this.user != null) {
+                if (user.isAdmin()) {
+                    binding.addItemButton.setVisibility(View.VISIBLE);
+                } else {
+                    binding.addItemButton.setVisibility(View.INVISIBLE); // Reset if not admin
+                }
+            }
+        });
+
+        //Todo: Make this open the Create quill page
+        binding.addItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ExploreActivity.this, "Button pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         handleNav();
 
