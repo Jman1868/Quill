@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.quill.database.QuillRepository;
 import com.example.quill.database.entities.Quill;
@@ -48,6 +47,8 @@ public class ExploreActivity extends AppCompatActivity {
         });
 
 
+
+
         //Button visibility
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key),
                 Context.MODE_PRIVATE);
@@ -65,11 +66,11 @@ public class ExploreActivity extends AppCompatActivity {
             }
         });
 
-        //Todo: Make this open the Create quill page
         binding.addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ExploreActivity.this, "Button pressed", Toast.LENGTH_SHORT).show();
+                Intent intent = CreateItemActivity.createItemActivityIntentFactory(getApplicationContext());
+                startActivity(intent);
             }
         });
 
