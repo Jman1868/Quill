@@ -22,10 +22,10 @@
         android:layout_marginTop="16dp"
         android:autofillHints="Enter User Name"
         android:background="@drawable/edit_text_border"
-        android:fontFamily="@font/abeezeeregular"
-        android:hint="Search"
         android:drawableLeft="@drawable/searchicon"
         android:drawablePadding="10dp"
+        android:fontFamily="@font/abeezeeregular"
+        android:hint="Search"
         android:inputType="text"
 
 
@@ -73,6 +73,7 @@
         android:id="@+id/quillRecyclerView"
         android:layout_width="293dp"
         android:layout_height="485dp"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,10 +87,10 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:background="@android:color/transparent"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/addbuttonimg"
-        android:visibility="gone" />
+        app:srcCompat="@drawable/addbuttonimg" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
