@@ -55,6 +55,7 @@ public abstract class QuillDatabase extends RoomDatabase {
                 UserDAO dao = INSTANCE.userDAO();
                 QuillDAO quillDAO = INSTANCE.quillDAO();
                 dao.deleteAll();
+                quillDAO.deleteAll();
                 // Create default users
                 User admin = new User("admin2", "admin2");
                 admin.setAdmin(true);

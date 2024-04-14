@@ -15,6 +15,9 @@ public interface QuillDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Quill quill);
 
+    @Query("DELETE from " + QuillDatabase.QUILL_TABLE)
+    void deleteAll();
+
     @Query("SELECT * FROM " + QuillDatabase.QUILL_TABLE)
     List<Quill> getAllRecords();
 
