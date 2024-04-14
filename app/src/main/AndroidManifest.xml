@@ -13,13 +13,15 @@
         android:theme="@style/Theme.Quill"
         tools:targetApi="31">
         <activity
+            android:name=".CreateItem"
+            android:exported="false" />
+        <activity
             android:name=".AccountActivity"
             android:exported="false" />
         <activity
             android:name=".ExploreActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan"
-            />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SignupActivity"
             android:exported="false" />
