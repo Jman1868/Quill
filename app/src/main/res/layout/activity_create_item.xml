@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateItem">
+    tools:context=".CreateItemActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -33,7 +33,7 @@
         android:id="@+id/createItemPageTitleEditText"
         android:layout_width="330dp"
         android:layout_height="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:autofillHints="Enter title"
         android:background="@drawable/edit_text_border"
         android:fontFamily="@font/abeezeeregular"
@@ -51,7 +51,7 @@
     <Button
         android:id="@+id/createItemHealthButton"
         android:layout_width="95dp"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_button"
@@ -66,10 +66,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createItemPageTitleEditText" />
 
+    <ImageView
+        android:id="@+id/createItemPageHealthSelected"
+        android:layout_width="105dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/createitempageselectedbox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/createItemPageTitleEditText"
+        android:visibility="invisible"/>
+
     <Button
         android:id="@+id/createItemSportsButton"
         android:layout_width="95dp"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_button"
 
@@ -84,10 +95,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createItemPageTitleEditText" />
 
+    <ImageView
+        android:id="@+id/createItemPageSportsSelected"
+        android:layout_width="105dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/createitempageselectedbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/createItemPageTitleEditText"
+        android:visibility="invisible"/>
+
     <Button
         android:id="@+id/createItemScienceButton"
         android:layout_width="95dp"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/rounded_button"
@@ -101,5 +123,73 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createItemPageTitleEditText" />
+
+    <ImageView
+        android:id="@+id/createItemPageScienceSelected"
+        android:layout_width="105dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="35dp"
+        android:src="@drawable/createitempageselectedbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/createItemPageTitleEditText"
+        android:visibility="invisible"/>
+
+    <EditText
+        android:id="@+id/createItemPageContentEditText"
+        android:layout_width="330dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="15dp"
+        android:autofillHints="Enter content"
+        android:background="@drawable/edit_text_border"
+        android:fontFamily="@font/abeezeeregular"
+        android:hint="@string/enter_content"
+        android:inputType="text"
+        android:paddingStart="20dp"
+        android:paddingBottom="220dp"
+
+        android:paddingEnd="20dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createItemSportsButton" />
+
+    <Button
+        android:id="@+id/createItemPageConfirmButton"
+        android:layout_width="240dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+
+        android:backgroundTint="@color/QuillOrange"
+        android:fontFamily="@font/abeezeeregular"
+        android:text="@string/confirm"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createItemPageContentEditText" />
+
+    <Button
+        android:id="@+id/createItemPageCancelButton"
+        android:layout_width="240dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+
+        android:backgroundTint="@color/QuillBeige"
+        android:fontFamily="@font/abeezeeregular"
+        android:text="@string/cancel"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createItemPageConfirmButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
