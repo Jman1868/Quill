@@ -27,26 +27,13 @@ public class ItemViewActivity extends AppCompatActivity {
         String quillCategory = getIntent().getStringExtra("QUILL_CATEGORY");
         String quillIsLiked = getIntent().getStringExtra("QUILL_ISLIKED");
         boolean isAdmin = getIntent().getBooleanExtra("QUILL_ISADMIN",false);
+
         binding.quillItemTitleTextView.setText(quillTitle);
         binding.quillContentTextView.setText(quillContent);
 
 
-                if (isAdmin) {
-                    binding.quillEditButton.setVisibility(View.VISIBLE);
-                    binding.quillTrashButton.setVisibility(View.VISIBLE);
-                } else {
-                    binding.quillEditButton.setVisibility(View.INVISIBLE);
-                    binding.quillTrashButton.setVisibility(View.INVISIBLE);
-                }
-
-        if ("Health".equalsIgnoreCase(quillCategory)) {
-            binding.quillItemBadgeImgView.setImageResource(R.drawable.healthbadge);
-        } else if ("Sports".equalsIgnoreCase(quillCategory)) {
-            binding.quillItemBadgeImgView.setImageResource(R.drawable.sportsbadge);
-        } else if ("Science".equalsIgnoreCase(quillCategory)) {
-            binding.quillItemBadgeImgView.setImageResource(R.drawable.sciencebadge);
-        }
-
+        displayBadges(quillCategory);
+        hideAdminButtons(isAdmin);
 
         binding.backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +59,26 @@ public class ItemViewActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void displayBadges(String quillCategory) {
+        if ("Health".equalsIgnoreCase(quillCategory)) {
+            binding.quillItemBadgeImgView.setImageResource(R.drawable.healthbadge);
+        } else if ("Sports".equalsIgnoreCase(quillCategory)) {
+            binding.quillItemBadgeImgView.setImageResource(R.drawable.sportsbadge);
+        } else if ("Science".equalsIgnoreCase(quillCategory)) {
+            binding.quillItemBadgeImgView.setImageResource(R.drawable.sciencebadge);
+        }
+    }
+
+    void hideAdminButtons(boolean isAdmin){
+        if (isAdmin) {
+            binding.quillEditButton.setVisibility(View.VISIBLE);
+            binding.quillTrashButton.setVisibility(View.VISIBLE);
+        } else {
+            binding.quillEditButton.setVisibility(View.INVISIBLE);
+            binding.quillTrashButton.setVisibility(View.INVISIBLE);
+        }
     }
 
 
