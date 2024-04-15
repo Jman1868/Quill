@@ -15,7 +15,7 @@ public class Quill {
     private String title;
     private String content;
     private String category;
-
+    private boolean liked;
 
     public Quill(String title, String content, String category) {
         this.title = title;
@@ -72,4 +72,11 @@ public class Quill {
     }
 
 
+    public boolean isLiked() {
+        return liked;
+    }
+
+    public void setLiked(boolean liked) {
+        this.liked = liked;
+    }
 }

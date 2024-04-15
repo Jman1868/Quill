@@ -6,16 +6,31 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.quill.databinding.ActivityExploreBinding;
+import com.example.quill.databinding.ActivityItemViewBinding;
+
 public class ItemViewActivity extends AppCompatActivity {
+
+
+    ActivityItemViewBinding  binding;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_item_view);
+        binding = ActivityItemViewBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        String quillTitle = getIntent().getStringExtra("QUILL_TITLE");
+        String quillContent = getIntent().getStringExtra("QUILL_CONTENT");
+        String quillCategory = getIntent().getStringExtra("QUILL_CATEGORY");
+        String quillIsliked = getIntent().getStringExtra("QUILL_ISLIKED");
+
+        binding.quillItemTitleTextView.setText(quillTitle);
+        binding.quillContentTextView.setText(quillContent);
+
     }
 
 
-    static Intent itemViewIntentFactory(Context context){
-        return new Intent(context, ItemViewActivity.class);
-    }
 }

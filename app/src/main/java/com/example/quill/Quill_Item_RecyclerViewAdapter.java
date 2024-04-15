@@ -19,7 +19,7 @@ import java.util.List;
 public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_Item_RecyclerViewAdapter.MyViewHolder> {
 
     private  final QuillRecyclerViewInterface quillRecyclerViewInterface;
-    private List<Quill> quillsList;
+    List<Quill> quillsList;
 
     public Quill_Item_RecyclerViewAdapter(List<Quill> quillsList, QuillRecyclerViewInterface quillRecyclerViewInterface) {
         this.quillsList = quillsList;

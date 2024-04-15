@@ -104,9 +104,13 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
 
     @Override
     public void onItemClick(int position) {
+        Quill selectedQuill = adapter.quillsList.get(position);
+        Intent intent = new Intent(ExploreActivity.this, ItemViewActivity.class);
+        intent.putExtra("QUILL_TITLE", selectedQuill.getTitle());
+        intent.putExtra("QUILL_CONTENT", selectedQuill.getContent());
+        intent.putExtra("QUILL_CATEGORY", selectedQuill.getCategory());
+        intent.putExtra("QUILL_ISLIKED", selectedQuill.isLiked());
 
-
-        Intent intent = ItemViewActivity.itemViewIntentFactory(getApplicationContext());
         startActivity(intent);
     }
 }
