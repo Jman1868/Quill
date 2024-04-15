@@ -7,5 +7,7 @@
     <color name="QuillBeige">#EDEAD0</color>
     <color name="QuillHighlight">#3AB795</color>
     <color name="QuillRed">#F87878</color>
+    <color name="QuillSports">#FBD6AA</color>
+    <color name="QuillScience">#56B8FF</color>
 
 </resources>

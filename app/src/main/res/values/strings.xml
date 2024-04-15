@@ -26,4 +26,13 @@
     <string name="stats">Stats</string>
     <string name="delete_user">Delete User</string>
     <string name="search_user_name">Search User Name</string>
+    <string name="explore">Explore</string>
+    <string name="create_an_item">Create an item</string>
+    <string name="title">Title</string>
+    <string name="health">Health</string>
+    <string name="sports">Sports</string>
+    <string name="science">Science</string>
+    <string name="enter_content">Enter in the content...</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
 </resources>

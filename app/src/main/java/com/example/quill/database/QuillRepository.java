@@ -10,6 +10,7 @@ import com.example.quill.database.entities.Quill;
 import com.example.quill.database.entities.User;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -47,6 +48,11 @@ public class QuillRepository {
         }
         return null;
     }
+
+    public LiveData<List<Quill>> getAllQuillsLiveData() {
+        return quillDAO.getAllQuill();
+    }
+
 
     public ArrayList<Quill> getAllQuills() {
         Future<ArrayList<Quill>> future = QuillDatabase.databaseWriteExecutor.submit(
@@ -94,22 +100,23 @@ public class QuillRepository {
         return userDAO.getUserByUserId(userId);
     }
 
-    public ArrayList<Quill> getAllLogsByUserId(int loggedInUserId) {
-        //Basically a Javascript promise
-        Future<ArrayList<Quill>> future = QuillDatabase.databaseWriteExecutor.submit(
-                new Callable<ArrayList<Quill>>() {
-                    @Override
-                    public ArrayList<Quill> call() throws Exception {
-                        return (ArrayList<Quill>) quillDAO.getRecordsbyUserId(loggedInUserId);
-                    }
-                }
-        );
-        try {
-            return future.get();
-        }catch (InterruptedException | ExecutionException e){
-            e.printStackTrace();
-            Log.i(MainActivity.TAG,"Problem when getting all GymLogs in the repository");
-        }
-        return null;
-    }
+
+//    public ArrayList<Quill> getAllLogsByUserId(int loggedInUserId) {
+//        //Basically a Javascript promise
+//        Future<ArrayList<Quill>> future = QuillDatabase.databaseWriteExecutor.submit(
+//                new Callable<ArrayList<Quill>>() {
+//                    @Override
+//                    public ArrayList<Quill> call() throws Exception {
+//                        return (ArrayList<Quill>) quillDAO.getRecordsbyUserId(loggedInUserId);
+//                    }
+//                }
+//        );
+//        try {
+//            return future.get();
+//        }catch (InterruptedException | ExecutionException e){
+//            e.printStackTrace();
+//            Log.i(MainActivity.TAG,"Problem when getting all GymLogs in the repository");
+//        }
+//        return null;
+//    }
 }

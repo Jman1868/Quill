@@ -15,26 +15,28 @@ public class Quill {
     private String title;
     private String content;
     private String category;
-    private int userId;
 
-    public Quill(String title, String content, String category, int userId) {
+
+    public Quill(String title, String content, String category) {
         this.title = title;
         this.content = content;
         this.category = category;
-        this.userId = userId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Quill quill = (Quill) o;
-        return id == quill.id && userId == quill.userId && Objects.equals(title, quill.title) && Objects.equals(content, quill.content) && Objects.equals(category, quill.category);
-    }
+    //Todo: Update this
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Quill quill = (Quill) o;
+//        return id == quill.id && userId == quill.userId && Objects.equals(title, quill.title) && Objects.equals(content, quill.content) && Objects.equals(category, quill.category);
+//    }
+
+
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, content, category, userId);
+        return Objects.hash(id, title, content, category);
     }
 
     public int getId() {
@@ -69,11 +71,5 @@ public class Quill {
         this.category = category;
     }
 
-    public int getUserId() {
-        return userId;
-    }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 }

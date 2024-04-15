@@ -6,15 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".ExploreActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="412dp"
+        android:layout_height="824dp"
+        android:layout_marginEnd="65dp"
+        android:src="@drawable/explorepagebg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/searchexplorePageEditText"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints="Enter User Name"
+        android:background="@drawable/edit_text_border"
+        android:drawableLeft="@drawable/searchicon"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/abeezeeregular"
+        android:hint="Search"
+        android:inputType="text"
+
+
+        android:paddingStart="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Explore Page"
+        android:fontFamily="@font/abeezeeregular"
+        android:text="@string/explore"
+        android:textColor="@color/black"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.043" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -34,4 +68,29 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.998"
         app:menu="@menu/navbar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/quillRecyclerView"
+        android:layout_width="293dp"
+        android:layout_height="485dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.682" />
+
+    <ImageButton
+        android:id="@+id/addItemButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/transparent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/addbuttonimg" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
