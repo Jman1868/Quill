@@ -22,7 +22,7 @@ public class EditItemActivity extends AppCompatActivity {
     String originalQuillTitle;
     String quillContent;
     String originalQuillContent;
-    String quillCategory;
+    String quillCategory = "";
     String originalQuillCategory;
     boolean quillIsLiked;
     boolean isAdmin;
@@ -118,6 +118,10 @@ public class EditItemActivity extends AppCompatActivity {
         if (quillContent.isEmpty()) {
             Toast.makeText(this, "Content is required", Toast.LENGTH_SHORT).show();
             return;
+        }
+
+        if (quillCategory.isEmpty()) {
+            quillCategory = originalQuillCategory;
         }
 
         LiveData<Quill> userObserver = repository.getQuillByTitle(originalQuillTitle);
