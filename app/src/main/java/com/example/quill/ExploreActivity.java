@@ -110,6 +110,7 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
         intent.putExtra("QUILL_CONTENT", selectedQuill.getContent());
         intent.putExtra("QUILL_CATEGORY", selectedQuill.getCategory());
         intent.putExtra("QUILL_ISLIKED", selectedQuill.isLiked());
+        intent.putExtra("QUILL_ISADMIN", user.isAdmin());
 
         startActivity(intent);
     }
