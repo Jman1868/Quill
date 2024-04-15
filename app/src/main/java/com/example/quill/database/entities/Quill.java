@@ -24,19 +24,17 @@ public class Quill {
     }
 
     //Todo: Update this
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Quill quill = (Quill) o;
-//        return id == quill.id && userId == quill.userId && Objects.equals(title, quill.title) && Objects.equals(content, quill.content) && Objects.equals(category, quill.category);
-//    }
-
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Quill quill = (Quill) o;
+        return id == quill.id && liked == quill.liked && Objects.equals(title, quill.title) && Objects.equals(content, quill.content) && Objects.equals(category, quill.category);
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, content, category);
+        return Objects.hash(id, title, content, category, liked);
     }
 
     public int getId() {
