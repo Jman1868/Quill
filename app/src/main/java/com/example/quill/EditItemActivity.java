@@ -91,7 +91,7 @@ public class EditItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EditItemActivity.this, ItemViewActivity.class);
-                intent.putExtra("QUILL_TITLE", quillTitle);
+                intent.putExtra("QUILL_TITLE", originalQuillTitle);
                 intent.putExtra("QUILL_CONTENT", quillContent);
                 intent.putExtra("QUILL_CATEGORY", quillCategory);
                 intent.putExtra("QUILL_ISLIKED", quillIsLiked);
