@@ -55,7 +55,13 @@ public class ItemViewActivity extends AppCompatActivity {
         binding.quillEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ItemViewActivity.this, "Edit Pressed", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ItemViewActivity.this, EditItemActivity.class);
+                intent.putExtra("QUILL_TITLE", quillTitle);
+                intent.putExtra("QUILL_CONTENT", quillContent);
+                intent.putExtra("QUILL_CATEGORY", quillCategory);
+                intent.putExtra("QUILL_ISLIKED", quillIsLiked);
+
+                startActivity(intent);
             }
         });
 
