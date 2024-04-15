@@ -73,9 +73,9 @@
         android:layout_marginStart="35dp"
         android:layout_marginTop="15dp"
         android:src="@drawable/createitempageselectedbox"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/createItemPageTitleEditText"
-        android:visibility="invisible"/>
+        app:layout_constraintTop_toBottomOf="@id/createItemPageTitleEditText" />
 
     <Button
         android:id="@+id/createItemSportsButton"
