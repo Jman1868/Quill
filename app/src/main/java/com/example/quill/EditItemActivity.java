@@ -21,7 +21,9 @@ public class EditItemActivity extends AppCompatActivity {
     String quillTitle;
     String originalQuillTitle;
     String quillContent;
+    String originalQuillContent;
     String quillCategory;
+    String originalQuillCategory;
     boolean quillIsLiked;
     boolean isAdmin;
 
@@ -35,15 +37,15 @@ public class EditItemActivity extends AppCompatActivity {
         repository = QuillRepository.getRepository(getApplication());
 
         originalQuillTitle = getIntent().getStringExtra("QUILL_TITLE");
-        quillContent = getIntent().getStringExtra("QUILL_CONTENT");
-        quillCategory = getIntent().getStringExtra("QUILL_CATEGORY");
+        originalQuillContent = getIntent().getStringExtra("QUILL_CONTENT");
+        originalQuillCategory = getIntent().getStringExtra("QUILL_CATEGORY");
         quillIsLiked = getIntent().getBooleanExtra("QUILL_ISLIKED", false);
         isAdmin = getIntent().getBooleanExtra("QUILL_ISADMIN", false);
 
         // Set the title, content, and category
         binding.editItemPageTitleEditText.setText(originalQuillTitle);
-        binding.editItemPageContentEditText.setText(quillContent);
-        setCategory(quillCategory);
+        binding.editItemPageContentEditText.setText(originalQuillContent);
+        setCategory(originalQuillCategory);
 
         // Get information from display and insert into repository
         binding.editItemPageConfirmButton.setOnClickListener(new View.OnClickListener() {
@@ -92,8 +94,8 @@ public class EditItemActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(EditItemActivity.this, ItemViewActivity.class);
                 intent.putExtra("QUILL_TITLE", originalQuillTitle);
-                intent.putExtra("QUILL_CONTENT", quillContent);
-                intent.putExtra("QUILL_CATEGORY", quillCategory);
+                intent.putExtra("QUILL_CONTENT", originalQuillContent);
+                intent.putExtra("QUILL_CATEGORY", originalQuillCategory);
                 intent.putExtra("QUILL_ISLIKED", quillIsLiked);
                 intent.putExtra("QUILL_ISADMIN", isAdmin);
 
@@ -139,8 +141,8 @@ public class EditItemActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void setCategory(String quillCategory) {
-        switch (quillCategory.toLowerCase(Locale.ROOT)) {
+    private void setCategory(String originalQuillCategory) {
+        switch (originalQuillCategory.toLowerCase(Locale.ROOT)) {
             case "health":
                 binding.editItemPageHealthSelected.setVisibility(View.VISIBLE);
                 binding.editItemPageSportsSelected.setVisibility(View.INVISIBLE);
