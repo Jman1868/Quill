@@ -25,7 +25,7 @@ public class ItemViewActivity extends AppCompatActivity {
         String quillTitle = getIntent().getStringExtra("QUILL_TITLE");
         String quillContent = getIntent().getStringExtra("QUILL_CONTENT");
         String quillCategory = getIntent().getStringExtra("QUILL_CATEGORY");
-        String quillIsLiked = getIntent().getStringExtra("QUILL_ISLIKED");
+        boolean quillIsLiked = getIntent().getBooleanExtra("QUILL_ISLIKED",false);
         boolean isAdmin = getIntent().getBooleanExtra("QUILL_ISADMIN",false);
 
         binding.quillItemTitleTextView.setText(quillTitle);
