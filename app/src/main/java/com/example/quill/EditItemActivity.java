@@ -1,9 +1,15 @@
 package com.example.quill;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+
+import com.example.quill.database.QuillRepository;
+import com.example.quill.database.entities.Quill;
 import com.example.quill.databinding.ActivityEditItemBinding;
 
 import java.util.Locale;
@@ -11,10 +17,13 @@ import java.util.Locale;
 public class EditItemActivity extends AppCompatActivity {
 
     ActivityEditItemBinding binding;
+    private QuillRepository repository;
     String quillTitle;
+    String originalQuillTitle;
     String quillContent;
     String quillCategory;
     boolean quillIsLiked;
+    boolean isAdmin;
 
 
     @Override
@@ -23,13 +32,16 @@ public class EditItemActivity extends AppCompatActivity {
         binding = ActivityEditItemBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        quillTitle = getIntent().getStringExtra("QUILL_TITLE");
+        repository = QuillRepository.getRepository(getApplication());
+
+        originalQuillTitle = getIntent().getStringExtra("QUILL_TITLE");
         quillContent = getIntent().getStringExtra("QUILL_CONTENT");
         quillCategory = getIntent().getStringExtra("QUILL_CATEGORY");
         quillIsLiked = getIntent().getBooleanExtra("QUILL_ISLIKED", false);
+        isAdmin = getIntent().getBooleanExtra("QUILL_ISADMIN", false);
 
         // Set the title, content, and category
-        binding.editItemPageTitleEditText.setText(quillTitle);
+        binding.editItemPageTitleEditText.setText(originalQuillTitle);
         binding.editItemPageContentEditText.setText(quillContent);
         setCategory(quillCategory);
 
@@ -74,6 +86,57 @@ public class EditItemActivity extends AppCompatActivity {
                 binding.editItemPageHealthSelected.setVisibility(View.INVISIBLE);
             }
         });
+
+        binding.editItemPageCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EditItemActivity.this, ItemViewActivity.class);
+                intent.putExtra("QUILL_TITLE", quillTitle);
+                intent.putExtra("QUILL_CONTENT", quillContent);
+                intent.putExtra("QUILL_CATEGORY", quillCategory);
+                intent.putExtra("QUILL_ISLIKED", quillIsLiked);
+                intent.putExtra("QUILL_ISADMIN", isAdmin);
+
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void getInformationFromDisplay() {
+        quillTitle = binding.editItemPageTitleEditText.getText().toString();
+        quillContent = binding.editItemPageContentEditText.getText().toString();
+    }
+
+    private void insertQuillRecord() {
+        if (quillTitle.isEmpty()) {
+            Toast.makeText(this, "Title is required", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (quillContent.isEmpty()) {
+            Toast.makeText(this, "Content is required", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        LiveData<Quill> userObserver = repository.getQuillByTitle(originalQuillTitle);
+        userObserver.observe(this, quill -> {
+            if (quill != null) {
+                quill.setTitle(quillTitle);
+                quill.setContent(quillContent);
+                quill.setCategory(quillCategory);
+                repository.insertQuill(quill);
+            }
+        });
+
+        Toast.makeText(this, "Item was successfully edited", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(EditItemActivity.this, ItemViewActivity.class);
+        intent.putExtra("QUILL_TITLE", quillTitle);
+        intent.putExtra("QUILL_CONTENT", quillContent);
+        intent.putExtra("QUILL_CATEGORY", quillCategory);
+        intent.putExtra("QUILL_ISLIKED", quillIsLiked);
+        intent.putExtra("QUILL_ISADMIN", isAdmin);
+
+        startActivity(intent);
     }
 
     private void setCategory(String quillCategory) {

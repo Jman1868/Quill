@@ -51,7 +51,6 @@ public class ItemViewActivity extends AppCompatActivity {
             }
         });
 
-        //Todo: Make this start the edit activity
         binding.quillEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +59,7 @@ public class ItemViewActivity extends AppCompatActivity {
                 intent.putExtra("QUILL_CONTENT", quillContent);
                 intent.putExtra("QUILL_CATEGORY", quillCategory);
                 intent.putExtra("QUILL_ISLIKED", quillIsLiked);
+                intent.putExtra("QUILL_ISADMIN", isAdmin);
 
                 startActivity(intent);
             }
