@@ -19,8 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-public class ExploreActivity extends AppCompatActivity {
-
+public class ExploreActivity extends AppCompatActivity implements QuillRecyclerViewInterface {
 
     ActivityExploreBinding binding;
     private Quill_Item_RecyclerViewAdapter adapter;
@@ -41,7 +40,7 @@ public class ExploreActivity extends AppCompatActivity {
         LiveData<List<Quill>> quillsLiveData = repository.getAllQuillsLiveData();
 
         quillsLiveData.observe(this, quills -> {
-            adapter = new Quill_Item_RecyclerViewAdapter(quills);
+            adapter = new Quill_Item_RecyclerViewAdapter(quills,this);
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         });
@@ -101,5 +100,13 @@ public class ExploreActivity extends AppCompatActivity {
             }
             return false;
         });
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
+
+        Intent intent = ItemViewActivity.itemViewIntentFactory(getApplicationContext());
+        startActivity(intent);
     }
 }

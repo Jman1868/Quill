@@ -18,17 +18,19 @@ import java.util.List;
 
 public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_Item_RecyclerViewAdapter.MyViewHolder> {
 
+    private  final QuillRecyclerViewInterface quillRecyclerViewInterface;
     private List<Quill> quillsList;
 
-    public Quill_Item_RecyclerViewAdapter(List<Quill> quillsList) {
+    public Quill_Item_RecyclerViewAdapter(List<Quill> quillsList, QuillRecyclerViewInterface quillRecyclerViewInterface) {
         this.quillsList = quillsList;
+        this.quillRecyclerViewInterface= quillRecyclerViewInterface;
     }
 
     @NonNull
     @Override
     public Quill_Item_RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.quill_item_recycler_view_row, parent, false);
-        return new MyViewHolder(view);
+        return new MyViewHolder(view, quillRecyclerViewInterface);
     }
 
     @Override
@@ -63,12 +65,25 @@ public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_I
         ImageView quillItemBadgeImgView;
         TextView quillItemTitle;
         CardView quillCardView;
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, QuillRecyclerViewInterface quillRecyclerViewInterface) {
             super(itemView);
             quillItemTitle = itemView.findViewById(R.id.quillItemTextView);
             quillItemBadgeImgView = itemView.findViewById(R.id.quillItemBadgeImgView);
             quillCardView = itemView.findViewById(R.id.quillCardView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(quillRecyclerViewInterface != null){
 
+                        int pos = getAdapterPosition();
+
+                        if(pos != RecyclerView.NO_POSITION){
+                            quillRecyclerViewInterface.onItemClick(pos);
+                        }
+
+                    }
+                }
+            });
         }
     }
 
