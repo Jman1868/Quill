@@ -151,6 +151,13 @@ public class MainActivity extends AppCompatActivity implements QuillRecyclerView
 
     @Override
     public void onItemClick(int position) {
+        Liked selectedLikedItem = adapter.likedList.get(position);
+        Intent intent = new Intent(MainActivity.this, ItemViewActivity.class);
+        intent.putExtra("QUILL_TITLE", selectedLikedItem.getTitle());
+        intent.putExtra("QUILL_CONTENT", selectedLikedItem.getContent());
+        intent.putExtra("QUILL_CATEGORY", selectedLikedItem.getCategory());
+        intent.putExtra("QUILL_ISADMIN", user.isAdmin());
 
+        startActivity(intent);
     }
 }
