@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements QuillRecyclerView
         LiveData<List<Liked>> likedLiveData = repository.getLikedQuillsByUserId(userId);
         likedLiveData.observe(this, likedItems -> {
             if (likedItems != null) {
-                adapter = new Liked_Item_Recycler_ViewAdapter(likedItems, this);
+                adapter = new Liked_Item_Recycler_ViewAdapter(likedItems, this, userId, repository);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
             }

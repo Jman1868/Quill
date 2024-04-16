@@ -51,7 +51,7 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
             this.user=user;
             if (this.user != null) {
                 quillsLiveData.observe(this, quills -> {
-                    adapter = new Quill_Item_RecyclerViewAdapter(quills,this,user.getId());
+                    adapter = new Quill_Item_RecyclerViewAdapter(quills,this,user.getId(), repository);
                     recyclerView.setAdapter(adapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 });

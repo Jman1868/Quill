@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quill.database.QuillRepository;
+import com.example.quill.database.entities.Liked;
 import com.example.quill.database.entities.Quill;
 
 import java.util.List;
@@ -22,21 +23,22 @@ import java.util.List;
 public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_Item_RecyclerViewAdapter.MyViewHolder> {
 
     private  final QuillRecyclerViewInterface quillRecyclerViewInterface;
-    //TODO: Change quillsList to be likedList instead
     List<Quill> quillsList;
     int userId;
+    QuillRepository quillRepository;
 
-    public Quill_Item_RecyclerViewAdapter(List<Quill> quillsList, QuillRecyclerViewInterface quillRecyclerViewInterface, int userId) {
+    public Quill_Item_RecyclerViewAdapter(List<Quill> quillsList, QuillRecyclerViewInterface quillRecyclerViewInterface, int userId, QuillRepository quillrepo) {
         this.quillsList = quillsList;
         this.quillRecyclerViewInterface= quillRecyclerViewInterface;
         this.userId= userId;
+        this.quillRepository = quillrepo;
     }
 
     @NonNull
     @Override
     public Quill_Item_RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.quill_item_recycler_view_row, parent, false);
-        return new MyViewHolder(view, quillRecyclerViewInterface, userId);
+        return new MyViewHolder(view, quillRecyclerViewInterface, userId, quillRepository, quillsList);
     }
 
     @Override
@@ -72,12 +74,19 @@ public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_I
         TextView quillItemTitle;
         CardView quillCardView;
         ImageButton likedItem;
-        public MyViewHolder(@NonNull View itemView, QuillRecyclerViewInterface quillRecyclerViewInterface, int userId) {
+        QuillRepository repository;
+
+        List<Quill> quills;
+
+        public MyViewHolder(@NonNull View itemView, QuillRecyclerViewInterface quillRecyclerViewInterface, int userId, QuillRepository quillRepo, List<Quill> quillList) {
             super(itemView);
             quillItemTitle = itemView.findViewById(R.id.quillItemTextView);
             quillItemBadgeImgView = itemView.findViewById(R.id.quillItemBadgeImgView);
             quillCardView = itemView.findViewById(R.id.quillCardView);
             likedItem = itemView.findViewById(R.id.quillItemHeartIcon);
+            repository = quillRepo;
+            quills = quillList;
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -98,7 +107,13 @@ public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_I
                 public void onClick(View v) {
                     Toast.makeText(itemView.getContext(), "Liked clicked by user id: "+ userId, Toast.LENGTH_SHORT).show();
 
+                    int position = getAdapterPosition();
 
+                    if(position != RecyclerView.NO_POSITION){
+                        Quill clickedQuill = quills.get(position);
+                        Liked liked = new Liked(clickedQuill.getTitle(), clickedQuill.getContent(), clickedQuill.getCategory(), userId);
+                        repository.insertLikedQuill(liked);
+                    }
                 }
             });
         }
