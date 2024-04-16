@@ -104,10 +104,8 @@ public class Liked_Item_Recycler_ViewAdapter extends RecyclerView.Adapter<Liked_
             likedItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(), "Unlike clicked by user id: "+ userId, Toast.LENGTH_SHORT).show();
 
                     int position = getAdapterPosition();
-
                     if(position != RecyclerView.NO_POSITION){
                         Liked clickedLiked = likedItems.get(position);
                         repository.deleteLikedQuill(clickedLiked);

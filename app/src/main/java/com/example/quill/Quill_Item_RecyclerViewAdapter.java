@@ -105,10 +105,8 @@ public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_I
             likedItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(), "Liked clicked by user id: "+ userId, Toast.LENGTH_SHORT).show();
 
                     int position = getAdapterPosition();
-
                     if(position != RecyclerView.NO_POSITION){
                         Quill clickedQuill = quills.get(position);
                         Liked liked = new Liked(clickedQuill.getTitle(), clickedQuill.getContent(), clickedQuill.getCategory(), userId);

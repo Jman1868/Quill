@@ -29,5 +29,6 @@ public interface LikedDAO {
     @Query("SELECT * FROM " + QuillDatabase.LIKED_TABLE + " WHERE userId = :loggedInUserId")
     LiveData<List<Liked>> getLikedQuillsByUserId(int loggedInUserId);
 
-
+    @Query("SELECT * FROM " + QuillDatabase.LIKED_TABLE +" WHERE title = :title AND userId = :userId")
+    Liked getLikedQuillByTitleAndUserId(String title, int userId);
 }
