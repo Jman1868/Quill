@@ -38,4 +38,6 @@
     <string name="edit">Edit</string>
     <string name="confirm_changes">Confirm Changes?</string>
     <string name="settings">Settings</string>
+    <string name="enter_new_user_name">Enter New User Name</string>
+    <string name="enter_new_password">Enter New Password</string>
 </resources>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+
+    <ImageView
+        android:id="@+id/settingsbgimgtop"
+        android:layout_width="417dp"
+        android:layout_height="354dp"
+        android:layout_marginTop="-65dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/accountpagewavytop" />
+
+    <TextView
+        android:id="@+id/titleSettingsPageTextView"
+        android:layout_width="276dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/abeezeeregular"
+        android:gravity="center"
+        android:text="@string/settings"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/enterNewUsernameTextView"
+        android:layout_width="228dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="90dp"
+        android:text="@string/enter_new_user_name"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.224"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleSettingsPageTextView"
+        android:fontFamily="@font/abeezeeitalic"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        />
+
+    <EditText
+        android:id="@+id/userNameSettingsEditText"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:autofillHints="Please enter user name"
+        android:hint="@string/username"
+        android:inputType="text"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterNewUsernameTextView"
+
+
+        android:fontFamily="@font/abeezeeregular"
+        android:layout_margin="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:background="@drawable/edit_text_border" />
+
+
+    <TextView
+        android:id="@+id/enterNewPasswordTextView"
+        android:layout_width="228dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/enter_new_password"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.224"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userNameSettingsEditText"
+
+        android:fontFamily="@font/abeezeeitalic"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp" />
+
+    <EditText
+        android:id="@+id/passwordSettingsEditText"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:autofillHints="Please enter user name"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterNewPasswordTextView"
+
+        android:fontFamily="@font/abeezeeregular"
+        android:layout_margin="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:background="@drawable/edit_text_border" />
+
+    <Button
+        android:id="@+id/settingsPageConfirmButton"
+        android:layout_width="240dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/rounded_button"
+
+        android:backgroundTint="@color/QuillOrange"
+        android:fontFamily="@font/abeezeeregular"
+        android:text="@string/confirm_changes"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordSettingsEditText" />
+
+    <Button
+        android:id="@+id/settingsPageCancelButton"
+        android:layout_width="240dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+
+        android:backgroundTint="@color/QuillBeige"
+        android:fontFamily="@font/abeezeeregular"
+        android:text="@string/cancel"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsPageConfirmButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
