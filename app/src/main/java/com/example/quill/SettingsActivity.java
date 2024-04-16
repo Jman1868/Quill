@@ -1,5 +1,6 @@
 package com.example.quill;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -51,9 +52,12 @@ public class SettingsActivity extends AppCompatActivity {
             changeUsername(newUsername);
         }
 
-        if (newPassword.isEmpty()) {
+        if (!newPassword.isEmpty()) {
             changePassword(newPassword);
         }
+
+        Intent intent = new Intent(SettingsActivity.this, AccountActivity.class);
+        startActivity(intent);
     }
 
     private void changeUsername(String newUsername) {
@@ -81,6 +85,7 @@ public class SettingsActivity extends AppCompatActivity {
             user.setPassword(newPassword);
             repository.insertUser(user);
             Toast.makeText(this, "Password was successfully changed", Toast.LENGTH_SHORT).show();
+            userObserver.removeObservers(this);
         });
     }
 }
