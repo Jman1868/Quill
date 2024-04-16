@@ -23,17 +23,19 @@ public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_I
     private  final QuillRecyclerViewInterface quillRecyclerViewInterface;
     //TODO: Change quillsList to be likedList instead
     List<Quill> quillsList;
+    int userId;
 
-    public Quill_Item_RecyclerViewAdapter(List<Quill> quillsList, QuillRecyclerViewInterface quillRecyclerViewInterface) {
+    public Quill_Item_RecyclerViewAdapter(List<Quill> quillsList, QuillRecyclerViewInterface quillRecyclerViewInterface, int userId) {
         this.quillsList = quillsList;
         this.quillRecyclerViewInterface= quillRecyclerViewInterface;
+        this.userId= userId;
     }
 
     @NonNull
     @Override
     public Quill_Item_RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.quill_item_recycler_view_row, parent, false);
-        return new MyViewHolder(view, quillRecyclerViewInterface);
+        return new MyViewHolder(view, quillRecyclerViewInterface, userId);
     }
 
     @Override
@@ -69,7 +71,7 @@ public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_I
         TextView quillItemTitle;
         CardView quillCardView;
         ImageButton likedItem;
-        public MyViewHolder(@NonNull View itemView, QuillRecyclerViewInterface quillRecyclerViewInterface) {
+        public MyViewHolder(@NonNull View itemView, QuillRecyclerViewInterface quillRecyclerViewInterface ,int userId) {
             super(itemView);
             quillItemTitle = itemView.findViewById(R.id.quillItemTextView);
             quillItemBadgeImgView = itemView.findViewById(R.id.quillItemBadgeImgView);
@@ -93,7 +95,7 @@ public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_I
             likedItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(), "Liked clicked", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(itemView.getContext(), "Liked clicked by user id: "+ userId, Toast.LENGTH_SHORT).show();
                 }
             });
         }

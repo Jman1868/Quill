@@ -40,14 +40,6 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
         QuillRepository repository = QuillRepository.getRepository(getApplication());
         LiveData<List<Quill>> quillsLiveData = repository.getAllQuillsLiveData();
 
-        quillsLiveData.observe(this, quills -> {
-            adapter = new Quill_Item_RecyclerViewAdapter(quills,this);
-            recyclerView.setAdapter(adapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        });
-
-
-
 
         //Button visibility
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key),
@@ -58,6 +50,11 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
         userObserver.observe(this, user -> {
             this.user=user;
             if (this.user != null) {
+                quillsLiveData.observe(this, quills -> {
+                    adapter = new Quill_Item_RecyclerViewAdapter(quills,this,user.getId());
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                });
                 if (user.isAdmin()) {
                     binding.addItemButton.setVisibility(View.VISIBLE);
                 } else {
