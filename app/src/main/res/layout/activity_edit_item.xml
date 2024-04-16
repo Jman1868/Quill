@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateItemActivity">
+    tools:context=".EditItemActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -16,13 +16,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/titleCreateItemPageTextView"
+        android:id="@+id/titleEditItemPageTextView"
         android:layout_width="276dp"
         android:layout_height="50dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/abeezeeregular"
         android:gravity="center"
-        android:text="@string/create_an_item"
+        android:text="@string/edit"
         android:textColor="@color/black"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/createItemPageTitleEditText"
+        android:id="@+id/editItemPageTitleEditText"
         android:layout_width="330dp"
         android:layout_height="60dp"
         android:layout_marginTop="15dp"
@@ -46,10 +46,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleCreateItemPageTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/titleEditItemPageTextView" />
 
     <Button
-        android:id="@+id/createItemHealthButton"
+        android:id="@+id/editItemHealthButton"
         android:layout_width="95dp"
         android:layout_height="45dp"
         android:layout_marginStart="40dp"
@@ -64,10 +64,10 @@
         android:textSize="22sp"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createItemPageTitleEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/editItemPageTitleEditText" />
 
     <ImageView
-        android:id="@+id/createItemPageHealthSelected"
+        android:id="@+id/editItemPageHealthSelected"
         android:layout_width="105dp"
         android:layout_height="55dp"
         android:layout_marginStart="35dp"
@@ -75,10 +75,10 @@
         android:src="@drawable/createitempageselectedbox"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/createItemPageTitleEditText" />
+        app:layout_constraintTop_toBottomOf="@id/editItemPageTitleEditText" />
 
     <Button
-        android:id="@+id/createItemSportsButton"
+        android:id="@+id/editItemSportsButton"
         android:layout_width="95dp"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
@@ -93,21 +93,21 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createItemPageTitleEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/editItemPageTitleEditText" />
 
     <ImageView
-        android:id="@+id/createItemPageSportsSelected"
+        android:id="@+id/editItemPageSportsSelected"
         android:layout_width="105dp"
         android:layout_height="55dp"
         android:layout_marginTop="15dp"
         android:src="@drawable/createitempageselectedbox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/createItemPageTitleEditText"
+        app:layout_constraintTop_toBottomOf="@id/editItemPageTitleEditText"
         android:visibility="invisible"/>
 
     <Button
-        android:id="@+id/createItemScienceButton"
+        android:id="@+id/editItemScienceButton"
         android:layout_width="95dp"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
@@ -122,10 +122,10 @@
         android:textSize="22sp"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createItemPageTitleEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/editItemPageTitleEditText" />
 
     <ImageView
-        android:id="@+id/createItemPageScienceSelected"
+        android:id="@+id/editItemPageScienceSelected"
         android:layout_width="105dp"
         android:layout_height="55dp"
         android:layout_marginStart="35dp"
@@ -133,11 +133,11 @@
         android:layout_marginEnd="35dp"
         android:src="@drawable/createitempageselectedbox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/createItemPageTitleEditText"
+        app:layout_constraintTop_toBottomOf="@id/editItemPageTitleEditText"
         android:visibility="invisible"/>
 
     <EditText
-        android:id="@+id/createItemPageContentEditText"
+        android:id="@+id/editItemPageContentEditText"
         android:layout_width="330dp"
         android:layout_height="300dp"
         android:layout_marginTop="15dp"
@@ -153,10 +153,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createItemSportsButton" />
+        app:layout_constraintTop_toBottomOf="@+id/editItemSportsButton" />
 
     <Button
-        android:id="@+id/createItemPageConfirmButton"
+        android:id="@+id/editItemPageConfirmButton"
         android:layout_width="240dp"
         android:layout_height="47dp"
         android:layout_marginTop="20dp"
@@ -164,17 +164,17 @@
 
         android:backgroundTint="@color/QuillOrange"
         android:fontFamily="@font/abeezeeregular"
-        android:text="@string/confirm"
+        android:text="@string/confirm_changes"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="24sp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createItemPageContentEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/editItemPageContentEditText" />
 
     <Button
-        android:id="@+id/createItemPageCancelButton"
+        android:id="@+id/editItemPageCancelButton"
         android:layout_width="240dp"
         android:layout_height="47dp"
         android:layout_marginTop="20dp"
@@ -189,6 +189,6 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createItemPageConfirmButton" />
+        app:layout_constraintTop_toBottomOf="@+id/editItemPageConfirmButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

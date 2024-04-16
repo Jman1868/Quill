@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 
 import com.example.quill.MainActivity;
+import com.example.quill.database.entities.Liked;
 import com.example.quill.database.entities.Quill;
 import com.example.quill.database.entities.User;
 
@@ -18,6 +19,7 @@ import java.util.concurrent.Future;
 public class QuillRepository {
     private final QuillDAO quillDAO;
     private final UserDAO userDAO;
+    private final LikedDAO likedDAO;
     private ArrayList<Quill> allQuills;
 
     private static QuillRepository repository;
@@ -26,6 +28,7 @@ public class QuillRepository {
         QuillDatabase db = QuillDatabase.getDatabase(application);
         this.quillDAO = db.quillDAO();
         this.userDAO = db.userDAO();
+        this.likedDAO = db.likedDAO();
         this.allQuills = (ArrayList<Quill>) this.quillDAO.getAllRecords();
     }
 
@@ -78,6 +81,17 @@ public class QuillRepository {
         });
     }
 
+    public void deleteQuill(Quill quill) {
+        QuillDatabase.databaseWriteExecutor.execute(() ->
+        {
+            quillDAO.delete(quill);
+        });
+    }
+
+    public LiveData<Quill> getQuillByTitle(String title) {
+        return quillDAO.getQuillByTitle(title);
+    }
+
     public void insertUser(User... user) {
         QuillDatabase.databaseWriteExecutor.execute(() ->
         {
@@ -98,6 +112,28 @@ public class QuillRepository {
 
     public LiveData<User> getUserByUserId(int userId) {
         return userDAO.getUserByUserId(userId);
+    }
+
+    public void insertLikedQuill(Liked liked) {
+        QuillDatabase.databaseWriteExecutor.execute(() ->
+        {
+            likedDAO.insert(liked);
+        });
+    }
+
+    public void deleteLikedQuill(Liked liked) {
+        QuillDatabase.databaseWriteExecutor.execute(() ->
+        {
+            likedDAO.delete(liked);
+        });
+    }
+
+    public LiveData<Liked> getLikedQuillByTitle(String title) {
+        return likedDAO.getLikedQuillByTitle(title);
+    }
+
+    public LiveData<List<Liked>> getLikedQuillsByUserId(int loggedInUserId) {
+        return likedDAO.getLikedQuillsByUserId(loggedInUserId);
     }
 
 

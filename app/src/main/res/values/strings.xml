@@ -35,4 +35,7 @@
     <string name="enter_content">Enter in the content...</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
+    <string name="edit">Edit</string>
+    <string name="confirm_changes">Confirm Changes?</string>
+    <string name="settings">Settings</string>
 </resources>

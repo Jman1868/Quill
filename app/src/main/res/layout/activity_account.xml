@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/accountPageSearchUsernameEditText" />
 
     <Button
-        android:id="@+id/accountPageStatsButton"
+        android:id="@+id/accountPageSettingsButton"
         android:layout_width="197dp"
         android:layout_height="47dp"
         android:layout_marginTop="30dp"
@@ -91,7 +91,7 @@
 
         android:backgroundTint="@color/QuillBeige"
         android:fontFamily="@font/abeezeeregular"
-        android:text="@string/stats"
+        android:text="@string/settings"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -116,7 +116,7 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accountPageStatsButton" />
+        app:layout_constraintTop_toBottomOf="@+id/accountPageSettingsButton" />
 
     <Button
         android:id="@+id/accountPageDeleteUserButton"

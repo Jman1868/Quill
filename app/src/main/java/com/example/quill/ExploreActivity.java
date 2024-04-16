@@ -19,8 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-public class ExploreActivity extends AppCompatActivity {
-
+public class ExploreActivity extends AppCompatActivity implements QuillRecyclerViewInterface {
 
     ActivityExploreBinding binding;
     private Quill_Item_RecyclerViewAdapter adapter;
@@ -41,7 +40,7 @@ public class ExploreActivity extends AppCompatActivity {
         LiveData<List<Quill>> quillsLiveData = repository.getAllQuillsLiveData();
 
         quillsLiveData.observe(this, quills -> {
-            adapter = new Quill_Item_RecyclerViewAdapter(quills);
+            adapter = new Quill_Item_RecyclerViewAdapter(quills,this);
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         });
@@ -101,5 +100,18 @@ public class ExploreActivity extends AppCompatActivity {
             }
             return false;
         });
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Quill selectedQuill = adapter.quillsList.get(position);
+        Intent intent = new Intent(ExploreActivity.this, ItemViewActivity.class);
+        intent.putExtra("QUILL_TITLE", selectedQuill.getTitle());
+        intent.putExtra("QUILL_CONTENT", selectedQuill.getContent());
+        intent.putExtra("QUILL_CATEGORY", selectedQuill.getCategory());
+        intent.putExtra("QUILL_ISLIKED", selectedQuill.isLiked());
+        intent.putExtra("QUILL_ISADMIN", user.isAdmin());
+
+        startActivity(intent);
     }
 }

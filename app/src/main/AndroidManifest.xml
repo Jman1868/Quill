@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Quill"
         tools:targetApi="31">
         <activity
+            android:name=".EditItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ItemViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateItemActivity"
             android:exported="false" />
         <activity

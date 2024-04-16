@@ -7,34 +7,34 @@ import com.example.quill.database.QuillDatabase;
 
 import java.util.Objects;
 
-@Entity(tableName = QuillDatabase.QUILL_TABLE)
-public class Quill {
+@Entity(tableName = QuillDatabase.LIKED_TABLE)
+public class Liked {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
     private String title;
     private String content;
     private String category;
-    private boolean liked;
+    private int userId;
 
-    public Quill(String title, String content, String category) {
+    public Liked(String title, String content, String category, int userId) {
         this.title = title;
         this.content = content;
         this.category = category;
+        this.userId = userId;
     }
 
-    //Todo: Update this
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Quill quill = (Quill) o;
-        return id == quill.id && liked == quill.liked && Objects.equals(title, quill.title) && Objects.equals(content, quill.content) && Objects.equals(category, quill.category);
+        Liked liked = (Liked) o;
+        return id == liked.id && userId == liked.userId && Objects.equals(title, liked.title) && Objects.equals(content, liked.content) && Objects.equals(category, liked.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, content, category, liked);
+        return Objects.hash(id, title, content, category, userId);
     }
 
     public int getId() {
@@ -69,12 +69,11 @@ public class Quill {
         this.category = category;
     }
 
-
-    public boolean isLiked() {
-        return liked;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setLiked(boolean liked) {
-        this.liked = liked;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
