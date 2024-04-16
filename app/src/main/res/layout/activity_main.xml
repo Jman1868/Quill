@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/homePageBGImageView"
+        android:layout_width="432dp"
+        android:layout_height="754dp"
+        android:layout_marginEnd="-5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/homepagebg" />
+
     <TextView
         android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
