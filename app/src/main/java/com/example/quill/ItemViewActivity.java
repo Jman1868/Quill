@@ -46,8 +46,7 @@ public class ItemViewActivity extends AppCompatActivity {
         binding.backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = ExploreActivity.exploreIntentFactory(getApplicationContext());
-                startActivity(intent);
+                finish();
             }
         });
 
