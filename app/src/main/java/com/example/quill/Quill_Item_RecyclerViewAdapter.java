@@ -105,6 +105,7 @@ public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_I
             likedItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Toast.makeText(itemView.getContext(), "Liked item!", Toast.LENGTH_SHORT).show();
 
                     int position = getAdapterPosition();
                     if(position != RecyclerView.NO_POSITION){

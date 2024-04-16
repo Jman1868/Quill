@@ -63,6 +63,13 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
             }
         });
 
+        addItemButton();
+
+        handleNav();
+
+    }
+
+    private void addItemButton() {
         binding.addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,9 +77,6 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
                 startActivity(intent);
             }
         });
-
-        handleNav();
-
     }
 
     static Intent exploreIntentFactory(Context context){
@@ -113,4 +117,5 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
         startActivity(intent);
 
     }
+
 }
