@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.quill.database.QuillRepository;
 import com.example.quill.database.entities.Quill;
 
 import java.util.List;
@@ -71,7 +72,7 @@ public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_I
         TextView quillItemTitle;
         CardView quillCardView;
         ImageButton likedItem;
-        public MyViewHolder(@NonNull View itemView, QuillRecyclerViewInterface quillRecyclerViewInterface ,int userId) {
+        public MyViewHolder(@NonNull View itemView, QuillRecyclerViewInterface quillRecyclerViewInterface, int userId) {
             super(itemView);
             quillItemTitle = itemView.findViewById(R.id.quillItemTextView);
             quillItemBadgeImgView = itemView.findViewById(R.id.quillItemBadgeImgView);
@@ -96,6 +97,8 @@ public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_I
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(itemView.getContext(), "Liked clicked by user id: "+ userId, Toast.LENGTH_SHORT).show();
+
+
                 }
             });
         }
