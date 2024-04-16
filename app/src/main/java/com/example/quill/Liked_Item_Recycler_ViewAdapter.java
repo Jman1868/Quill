@@ -3,7 +3,7 @@ package com.example.quill;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageSwitcher;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,42 +11,42 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.quill.database.entities.Liked;
 import com.example.quill.database.entities.Quill;
 
 import java.util.List;
 
+public class Liked_Item_Recycler_ViewAdapter extends RecyclerView.Adapter<Liked_Item_Recycler_ViewAdapter.MyViewHolder> {
 
-public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_Item_RecyclerViewAdapter.MyViewHolder> {
+    private final QuillRecyclerViewInterface quillRecyclerViewInterface;
+    List<Liked> likedList;
 
-    private  final QuillRecyclerViewInterface quillRecyclerViewInterface;
-    //TODO: Change quillsList to be likedList instead
-    List<Quill> quillsList;
-
-    public Quill_Item_RecyclerViewAdapter(List<Quill> quillsList, QuillRecyclerViewInterface quillRecyclerViewInterface) {
-        this.quillsList = quillsList;
+    public Liked_Item_Recycler_ViewAdapter(List<Liked> likedList, QuillRecyclerViewInterface quillRecyclerViewInterface) {
+        this.likedList = likedList;
         this.quillRecyclerViewInterface= quillRecyclerViewInterface;
     }
 
     @NonNull
     @Override
-    public Quill_Item_RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Liked_Item_Recycler_ViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.quill_item_recycler_view_row, parent, false);
-        return new MyViewHolder(view, quillRecyclerViewInterface);
+        return new Liked_Item_Recycler_ViewAdapter.MyViewHolder(view, quillRecyclerViewInterface);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Quill_Item_RecyclerViewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Liked_Item_Recycler_ViewAdapter.MyViewHolder holder, int position) {
 
-        Quill quill = quillsList.get(position);
-        holder.quillItemTitle.setText(quill.getTitle());
+        Liked likedItem = likedList.get(position);
+        holder.quillItemTitle.setText(likedItem.getTitle());
+        holder.likedItem.setBackgroundResource(R.drawable.iconheartfilled);
 
-        if ("Health".equalsIgnoreCase(quill.getCategory())) {
+        if ("Health".equalsIgnoreCase(likedItem.getCategory())) {
             holder.quillCardView.setBackgroundResource(R.drawable.health_gradient);
             holder.quillItemBadgeImgView.setImageResource(R.drawable.healthbadge);
-        } else if ("Sports".equalsIgnoreCase(quill.getCategory())) {
+        } else if ("Sports".equalsIgnoreCase(likedItem.getCategory())) {
             holder.quillCardView.setBackgroundResource(R.drawable.sports_gradient);
             holder.quillItemBadgeImgView.setImageResource(R.drawable.sportsbadge);
-        } else if ("Science".equalsIgnoreCase(quill.getCategory())) {
+        } else if ("Science".equalsIgnoreCase(likedItem.getCategory())) {
             holder.quillCardView.setBackgroundResource(R.drawable.science_gradient);
             holder.quillItemBadgeImgView.setImageResource(R.drawable.sciencebadge);
         } else {
@@ -58,7 +58,7 @@ public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_I
 
     @Override
     public int getItemCount() {
-        return quillsList.size();
+        return likedList.size();
     }
 
 
@@ -66,11 +66,13 @@ public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_I
         ImageView quillItemBadgeImgView;
         TextView quillItemTitle;
         CardView quillCardView;
+        ImageButton likedItem;
         public MyViewHolder(@NonNull View itemView, QuillRecyclerViewInterface quillRecyclerViewInterface) {
             super(itemView);
             quillItemTitle = itemView.findViewById(R.id.quillItemTextView);
             quillItemBadgeImgView = itemView.findViewById(R.id.quillItemBadgeImgView);
             quillCardView = itemView.findViewById(R.id.quillCardView);
+            likedItem = itemView.findViewById(R.id.quillItemHeartIcon);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

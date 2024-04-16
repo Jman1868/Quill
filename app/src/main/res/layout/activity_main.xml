@@ -43,17 +43,17 @@
         android:textSize="38sp" />
 
     <TextView
+        android:id="@+id/yourListTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/yourListTextView"
-        android:gravity="center"
         android:layout_marginTop="10dp"
-        android:text="@string/your_list"
         android:fontFamily="@font/abeezeeitalic"
-        app:layout_constraintTop_toBottomOf="@id/homePageUsernameTextView"
+        android:gravity="center"
+        android:text="@string/your_list"
+        android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textSize="23sp" />
+        app:layout_constraintTop_toBottomOf="@id/homePageUsernameTextView" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -73,5 +73,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.998"
         app:menu="@menu/navbar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/quillRecyclerView"
+        android:layout_width="357dp"
+        android:layout_height="513dp"
+        android:layout_marginTop="47dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yourListTextView"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
