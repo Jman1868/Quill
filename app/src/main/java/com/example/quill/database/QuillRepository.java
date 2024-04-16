@@ -117,7 +117,14 @@ public class QuillRepository {
     public void insertLikedQuill(Liked liked) {
         QuillDatabase.databaseWriteExecutor.execute(() ->
         {
-            likedDAO.insert(liked);
+            // Check if the liked item already exists
+            Liked existingLiked = likedDAO.getLikedQuillByTitleAndUserId(liked.getTitle(), liked.getUserId());
+
+            if (existingLiked == null) { // If item doesn't exist, insert it
+                likedDAO.insert(liked);
+            } else {
+                Log.i(MainActivity.TAG, "Liked item already exists.");
+            }
         });
     }
 

@@ -21,7 +21,7 @@ public class ItemViewActivity extends AppCompatActivity {
     ActivityItemViewBinding  binding;
     private QuillRepository repository;
     String quillTitle;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +46,7 @@ public class ItemViewActivity extends AppCompatActivity {
         binding.backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = ExploreActivity.exploreIntentFactory(getApplicationContext());
-                startActivity(intent);
+                finish();
             }
         });
 
@@ -69,6 +68,13 @@ public class ItemViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showDeleteQuillDialog(quillTitle);
+            }
+        });
+        
+        binding.quillItemHeartIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ItemViewActivity.this, "Like clicked", Toast.LENGTH_SHORT).show();
             }
         });
 

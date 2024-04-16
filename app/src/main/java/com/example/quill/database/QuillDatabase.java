@@ -78,10 +78,10 @@ public abstract class QuillDatabase extends RoomDatabase {
                 quillDAO.insert(defaultSecondItem);
 
                 //Create Default likedQuill Item
-                Liked likedDefaultItem = new Liked("A generic Title", "Some generic text", "Health", 1);
+                Liked likedDefaultItem = new Liked("This is a liked item", "Some generic text", "Health", 1);
                 likedDAO.insert(likedDefaultItem);
 
-                Liked likedDefaultSecondItem = new Liked("Another generic Title", "Some more generic text", "Sports", 2);
+                Liked likedDefaultSecondItem = new Liked("Another liked Title", "Some more generic text", "Sports", 2);
                 likedDAO.insert(likedDefaultSecondItem);
 
             });

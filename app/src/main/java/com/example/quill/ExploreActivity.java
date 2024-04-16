@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.quill.database.QuillRepository;
 import com.example.quill.database.entities.Quill;
@@ -39,14 +40,6 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
         QuillRepository repository = QuillRepository.getRepository(getApplication());
         LiveData<List<Quill>> quillsLiveData = repository.getAllQuillsLiveData();
 
-        quillsLiveData.observe(this, quills -> {
-            adapter = new Quill_Item_RecyclerViewAdapter(quills,this);
-            recyclerView.setAdapter(adapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        });
-
-
-
 
         //Button visibility
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key),
@@ -57,6 +50,11 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
         userObserver.observe(this, user -> {
             this.user=user;
             if (this.user != null) {
+                quillsLiveData.observe(this, quills -> {
+                    adapter = new Quill_Item_RecyclerViewAdapter(quills,this,user.getId(), repository);
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                });
                 if (user.isAdmin()) {
                     binding.addItemButton.setVisibility(View.VISIBLE);
                 } else {
@@ -65,6 +63,13 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
             }
         });
 
+        addItemButton();
+
+        handleNav();
+
+    }
+
+    private void addItemButton() {
         binding.addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,9 +77,6 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
                 startActivity(intent);
             }
         });
-
-        handleNav();
-
     }
 
     static Intent exploreIntentFactory(Context context){
@@ -113,5 +115,7 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
         intent.putExtra("QUILL_ISADMIN", user.isAdmin());
 
         startActivity(intent);
+
     }
+
 }

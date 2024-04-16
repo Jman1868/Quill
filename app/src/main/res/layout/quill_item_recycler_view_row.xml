@@ -47,27 +47,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/healthbadge" />
 
-            <ImageButton
-                android:id="@+id/quillItemTrashIcon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@android:color/transparent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/icontrash" />
 
-            <ImageButton
-                android:id="@+id/quillItemEditIcon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@android:color/transparent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/iconedit" />
+
 
             <ImageButton
                 android:id="@+id/quillItemHeartIcon"

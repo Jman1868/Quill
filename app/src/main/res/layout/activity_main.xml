@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/homePageBGImageView"
+        android:layout_width="432dp"
+        android:layout_height="754dp"
+        android:layout_marginEnd="-5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/homepagebg" />
+
     <TextView
         android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
@@ -14,6 +23,8 @@
         android:gravity="center"
         android:text="@string/welcome"
         android:textSize="45sp"
+        android:fontFamily="@font/abeezeeregular"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,22 +35,25 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/user"
+        android:fontFamily="@font/abeezeeregular"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
         android:textSize="38sp" />
 
     <TextView
+        android:id="@+id/yourListTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/yourListTextView"
-        android:gravity="center"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/abeezeeitalic"
+        android:gravity="center"
         android:text="@string/your_list"
-        app:layout_constraintTop_toBottomOf="@id/homePageUsernameTextView"
+        android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textSize="23sp" />
+        app:layout_constraintTop_toBottomOf="@id/homePageUsernameTextView" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -59,5 +73,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.998"
         app:menu="@menu/navbar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/quillRecyclerView"
+        android:layout_width="357dp"
+        android:layout_height="513dp"
+        android:layout_marginTop="47dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yourListTextView"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
