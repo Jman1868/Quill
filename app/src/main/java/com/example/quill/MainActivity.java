@@ -63,16 +63,17 @@ public class MainActivity extends AppCompatActivity implements QuillRecyclerView
             this.user=user;
             if (this.user != null) {
                 binding.homePageUsernameTextView.setText(user.getUsername());
-                fetchLikedItems();
+                fetchLikedItems(this.user.getId());
             }
         });
 
 
     }
 
-    private void fetchLikedItems() {
+    private void fetchLikedItems(int userId) {
         RecyclerView recyclerView = findViewById(R.id.quillRecyclerView);
-        LiveData<List<Liked>> likedLiveData = repository.getLikedQuillsByUserId(user.getId());
+
+        LiveData<List<Liked>> likedLiveData = repository.getLikedQuillsByUserId(userId);
         likedLiveData.observe(this, likedItems -> {
             if (likedItems != null) {
                 adapter = new Liked_Item_Recycler_ViewAdapter(likedItems, this);

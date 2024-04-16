@@ -3,9 +3,11 @@ package com.example.quill;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -66,11 +68,13 @@ public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_I
         ImageView quillItemBadgeImgView;
         TextView quillItemTitle;
         CardView quillCardView;
+        ImageButton likedItem;
         public MyViewHolder(@NonNull View itemView, QuillRecyclerViewInterface quillRecyclerViewInterface) {
             super(itemView);
             quillItemTitle = itemView.findViewById(R.id.quillItemTextView);
             quillItemBadgeImgView = itemView.findViewById(R.id.quillItemBadgeImgView);
             quillCardView = itemView.findViewById(R.id.quillCardView);
+            likedItem = itemView.findViewById(R.id.quillItemHeartIcon);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -83,6 +87,13 @@ public class Quill_Item_RecyclerViewAdapter extends RecyclerView.Adapter<Quill_I
                         }
 
                     }
+                }
+            });
+
+            likedItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(itemView.getContext(), "Liked clicked", Toast.LENGTH_SHORT).show();
                 }
             });
         }
