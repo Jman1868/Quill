@@ -43,4 +43,18 @@ public class QuillUnitTest {
        assertEquals(defaultUserName, defaultUser.getUsername());
     }
 
+    @Test public void setUserName(){
+        String newDefaultUserName = "newDefaultUserName";
+        assertNotEquals(newDefaultUserName, defaultUser.getUsername());
+        defaultUser.setUsername(newDefaultUserName);
+        assertEquals(newDefaultUserName, defaultUser.getUsername());
+    }
+
+    @Test public void setPassWord(){
+        String newDefaultPassword = "newDefaultPassword";
+        assertNotEquals(newDefaultPassword, defaultUser.getPassword());
+        defaultUser.setPassword(newDefaultPassword);
+        assertEquals(newDefaultPassword, defaultUser.getPassword());
+    }
+
 }
