@@ -74,6 +74,15 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
+        binding.accountPageSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AccountActivity.this, SettingsActivity.class);
+                intent.putExtra("CURRENT_USERID", user.getId());
+                startActivity(intent);
+            }
+        });
+
         handleNav();
     }
 
