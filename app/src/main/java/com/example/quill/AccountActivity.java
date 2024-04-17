@@ -196,12 +196,14 @@ public class AccountActivity extends AppCompatActivity {
             if (item.getItemId() == R.id.navigation_home) {
 
                 Intent intent = new Intent(AccountActivity.this,MainActivity.class);
+                finish();
                 startActivity(intent);
             }
 
             if (item.getItemId() == R.id.navigation_explore) {
 
                 Intent intent = ExploreActivity.exploreIntentFactory(getApplicationContext());
+                finish();
                 startActivity(intent);
             }
             return false;

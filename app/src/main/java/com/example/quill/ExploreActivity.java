@@ -92,12 +92,14 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
             if (item.getItemId() == R.id.navigation_home) {
 
                 Intent intent = new Intent(ExploreActivity.this,MainActivity.class);
+                finish();
                 startActivity(intent);
             }
 
             if (item.getItemId() == R.id.navigation_account) {
 
                 Intent intent = AccountActivity.accountIntentFactory(getApplicationContext());
+                finish();
                 startActivity(intent);
             }
             return false;
