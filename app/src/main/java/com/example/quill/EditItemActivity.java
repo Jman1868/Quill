@@ -1,5 +1,6 @@
 package com.example.quill;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -93,16 +94,7 @@ public class EditItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                 Intent intent = new Intent(EditItemActivity.this, ItemViewActivity.class);
-//                intent.putExtra("QUILL_TITLE", originalQuillTitle);
-//                intent.putExtra("QUILL_CONTENT", originalQuillContent);
-//                intent.putExtra("QUILL_CATEGORY", originalQuillCategory);
-//                intent.putExtra("QUILL_ISLIKED", quillIsLiked);
-//                intent.putExtra("QUILL_ISADMIN", isAdmin);
-
-                //TODO: Quick fix for the back button. If time is available make this go to the item view instead
                 Intent intent = new Intent(EditItemActivity.this, ExploreActivity.class);
-
                 startActivity(intent);
             }
         });
@@ -167,5 +159,9 @@ public class EditItemActivity extends AppCompatActivity {
                 binding.editItemPageSportsSelected.setVisibility(View.INVISIBLE);
                 break;
         }
+    }
+
+    static Intent editItemActivityIntentFactory(Context context) {
+        return new Intent(context, EditItemActivity.class);
     }
 }

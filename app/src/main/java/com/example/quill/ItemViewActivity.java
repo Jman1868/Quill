@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,6 +36,7 @@ public class ItemViewActivity extends AppCompatActivity {
         String quillCategory = getIntent().getStringExtra("QUILL_CATEGORY");
         boolean quillIsLiked = getIntent().getBooleanExtra("QUILL_ISLIKED",false);
         boolean isAdmin = getIntent().getBooleanExtra("QUILL_ISADMIN",false);
+        boolean isSearch = getIntent().getBooleanExtra("QUILL_ISSEARCH",false);
 
         binding.quillItemTitleTextView.setText(quillTitle);
         binding.quillContentTextView.setText(quillContent);
@@ -46,7 +48,14 @@ public class ItemViewActivity extends AppCompatActivity {
         binding.backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+
+                if(isSearch){
+                    Intent intent = ExploreActivity.exploreIntentFactory(getApplicationContext());
+                    startActivity(intent);
+                    finish(); // Finish the current activity to prevent coming back to it
+                } else {
+                    finish();
+                }
             }
         });
 
@@ -68,13 +77,6 @@ public class ItemViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showDeleteQuillDialog(quillTitle);
-            }
-        });
-        
-        binding.quillItemHeartIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ItemViewActivity.this, "Like clicked", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -137,5 +139,8 @@ public class ItemViewActivity extends AppCompatActivity {
         }
     }
 
+    static Intent itemViewActivityIntentFactory(Context context) {
+        return new Intent(context, ItemViewActivity.class);
+    }
 
 }

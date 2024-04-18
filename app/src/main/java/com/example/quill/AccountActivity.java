@@ -183,11 +183,6 @@ public class AccountActivity extends AppCompatActivity {
         alertBuilder.create().show();
     }
 
-    static Intent accountIntentFactory(Context context){
-        return new Intent(context, AccountActivity.class);
-    }
-
-
     void handleNav() {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -208,5 +203,9 @@ public class AccountActivity extends AppCompatActivity {
             }
             return false;
         });
+    }
+
+    static Intent accountIntentFactory(Context context){
+        return new Intent(context, AccountActivity.class);
     }
 }

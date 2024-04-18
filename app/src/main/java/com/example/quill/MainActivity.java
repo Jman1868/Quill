@@ -101,9 +101,6 @@ public class MainActivity extends AppCompatActivity implements QuillRecyclerView
             return;
         }
 
-        // Check intent for logged in user
-//        loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
-
     }
 
     @Override
@@ -121,12 +118,6 @@ public class MainActivity extends AppCompatActivity implements QuillRecyclerView
         SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
         sharedPrefEditor.putInt(getString(R.string.preference_userId_key),loggedInUserId);
         sharedPrefEditor.apply();
-    }
-
-    static Intent mainActivityIntentFactory(Context context, int userId) {
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra(MAIN_ACTIVITY_USER_ID, userId);
-        return intent;
     }
 
     void handleNav() {
@@ -161,5 +152,11 @@ public class MainActivity extends AppCompatActivity implements QuillRecyclerView
         intent.putExtra("QUILL_ISADMIN", user.isAdmin());
 
         startActivity(intent);
+    }
+
+    static Intent mainActivityIntentFactory(Context context, int userId) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra(MAIN_ACTIVITY_USER_ID, userId);
+        return intent;
     }
 }
