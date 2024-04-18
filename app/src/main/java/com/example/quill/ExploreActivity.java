@@ -27,7 +27,6 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
     ActivityExploreBinding binding;
     private Quill_Item_RecyclerViewAdapter adapter;
 
-    //Todo: See if we can just use the logged out value from main instead
     private static final int LOGGED_OUT = -1;
     private int loggedInUserId = -1;
     private User user;
@@ -78,9 +77,7 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
     private void searchQuill(Quill_Item_RecyclerViewAdapter recyclerViewAdapter) {
         EditText searchBar = binding.searchexplorePageEditText;
 
-        //Loop through the quill list and check if the search value matches
-        //the title value
-
+        //Loop through the quill list and check if the search value matches the title value
         searchBar.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {

@@ -53,7 +53,7 @@ public class ItemViewActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish(); // Finish the current activity to prevent coming back to it
                 } else {
-                    finish(); // Finish the current activity and go back to the previous one
+                    finish();
                 }
             }
         });

@@ -31,7 +31,4 @@ public interface QuillDAO {
 
     @Query("SELECT * FROM " + QuillDatabase.QUILL_TABLE + " WHERE title == :title ")
     LiveData<Quill> getQuillByTitle(String title);
-
-//    @Query("SELECT * FROM " + QuillDatabase.QUILL_TABLE + " WHERE userId = :loggedInUserId")
-//    List<Quill> getRecordsbyUserId(int loggedInUserId);
 }

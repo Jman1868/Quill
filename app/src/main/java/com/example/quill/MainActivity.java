@@ -101,9 +101,6 @@ public class MainActivity extends AppCompatActivity implements QuillRecyclerView
             return;
         }
 
-        // Check intent for logged in user
-//        loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
-
     }
 
     @Override
