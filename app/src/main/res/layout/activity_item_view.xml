@@ -39,16 +39,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/healthbadge" />
 
-    <ImageButton
-        android:id="@+id/quillItemHeartIcon"
-        android:layout_width="32dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="136dp"
-        android:layout_marginEnd="16dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/iconunfilledheart" />
 
     <View
         android:id="@+id/horizontalLineView"

@@ -70,13 +70,6 @@ public class ItemViewActivity extends AppCompatActivity {
                 showDeleteQuillDialog(quillTitle);
             }
         });
-        
-        binding.quillItemHeartIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ItemViewActivity.this, "Like clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 
