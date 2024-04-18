@@ -137,12 +137,14 @@ public class MainActivity extends AppCompatActivity implements QuillRecyclerView
             if (item.getItemId() == R.id.navigation_explore) {
 
                 Intent intent = ExploreActivity.exploreIntentFactory(getApplicationContext());
+                finish();
                 startActivity(intent);
             }
 
             if (item.getItemId() == R.id.navigation_account) {
 
                 Intent intent = AccountActivity.accountIntentFactory(getApplicationContext());
+                finish();
                 startActivity(intent);
             }
             return false;
