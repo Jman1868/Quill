@@ -9,7 +9,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.quill.database.QuillRepository;
@@ -29,6 +31,9 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
     private static final int LOGGED_OUT = -1;
     private int loggedInUserId = -1;
     private User user;
+
+    private boolean isSearch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +59,8 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
                     adapter = new Quill_Item_RecyclerViewAdapter(quills,this,user.getId(), repository);
                     recyclerView.setAdapter(adapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                    searchQuill(adapter);
+
                 });
                 if (user.isAdmin()) {
                     binding.addItemButton.setVisibility(View.VISIBLE);
@@ -64,10 +71,50 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
         });
 
         addItemButton();
-
         handleNav();
 
     }
+
+    private void searchQuill(Quill_Item_RecyclerViewAdapter recyclerViewAdapter) {
+        EditText searchBar = binding.searchexplorePageEditText;
+
+        //Loop through the quill list and check if the search value matches
+        //the title value
+
+        searchBar.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+
+                    String searchValue = searchBar.getText().toString().toLowerCase();
+                    boolean found = false;
+
+                    for (Quill quill : recyclerViewAdapter.quillsList) {
+                        if (quill.getTitle().toLowerCase().contains(searchValue)) {
+                            isSearch = true;
+                            startItemActivity(quill);
+                            found = true;
+                            break; // Exit the loop once a match is found
+                        }
+                    }
+
+                    if (!found) {
+                        isSearch = false;
+                        Toast.makeText(ExploreActivity.this, "Item not found!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    return true;
+                }
+                return false;
+            }
+        });
+
+
+    }
+
+
+
 
     private void addItemButton() {
         binding.addItemButton.setOnClickListener(new View.OnClickListener() {
@@ -109,15 +156,21 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
     @Override
     public void onItemClick(int position) {
         Quill selectedQuill = adapter.quillsList.get(position);
+        startItemActivity(selectedQuill);
+
+    }
+
+    public void startItemActivity(Quill selectedQuill){
+
         Intent intent = new Intent(ExploreActivity.this, ItemViewActivity.class);
         intent.putExtra("QUILL_TITLE", selectedQuill.getTitle());
         intent.putExtra("QUILL_CONTENT", selectedQuill.getContent());
         intent.putExtra("QUILL_CATEGORY", selectedQuill.getCategory());
         intent.putExtra("QUILL_ISLIKED", selectedQuill.isLiked());
         intent.putExtra("QUILL_ISADMIN", user.isAdmin());
+        intent.putExtra("QUILL_ISSEARCH", isSearch);
 
         startActivity(intent);
-
     }
 
 }

@@ -35,6 +35,7 @@ public class ItemViewActivity extends AppCompatActivity {
         String quillCategory = getIntent().getStringExtra("QUILL_CATEGORY");
         boolean quillIsLiked = getIntent().getBooleanExtra("QUILL_ISLIKED",false);
         boolean isAdmin = getIntent().getBooleanExtra("QUILL_ISADMIN",false);
+        boolean isSearch = getIntent().getBooleanExtra("QUILL_ISSEARCH",false);
 
         binding.quillItemTitleTextView.setText(quillTitle);
         binding.quillContentTextView.setText(quillContent);
@@ -46,7 +47,14 @@ public class ItemViewActivity extends AppCompatActivity {
         binding.backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+
+                if(isSearch){
+                    Intent intent = ExploreActivity.exploreIntentFactory(getApplicationContext());
+                    startActivity(intent);
+                    finish(); // Finish the current activity to prevent coming back to it
+                } else {
+                    finish(); // Finish the current activity and go back to the previous one
+                }
             }
         });
 
