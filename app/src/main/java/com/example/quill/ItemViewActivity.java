@@ -48,14 +48,9 @@ public class ItemViewActivity extends AppCompatActivity {
         binding.backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(isSearch){
-                    Intent intent = ExploreActivity.exploreIntentFactory(getApplicationContext());
-                    startActivity(intent);
-                    finish(); // Finish the current activity to prevent coming back to it
-                } else {
-                    finish();
-                }
+                Intent intent = ExploreActivity.exploreIntentFactory(getApplicationContext());
+                startActivity(intent);
+                finish(); // Finish the current activity to prevent coming back to it
             }
         });
 
