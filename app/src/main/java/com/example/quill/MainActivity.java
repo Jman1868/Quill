@@ -120,12 +120,6 @@ public class MainActivity extends AppCompatActivity implements QuillRecyclerView
         sharedPrefEditor.apply();
     }
 
-    static Intent mainActivityIntentFactory(Context context, int userId) {
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra(MAIN_ACTIVITY_USER_ID, userId);
-        return intent;
-    }
-
     void handleNav() {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -158,5 +152,11 @@ public class MainActivity extends AppCompatActivity implements QuillRecyclerView
         intent.putExtra("QUILL_ISADMIN", user.isAdmin());
 
         startActivity(intent);
+    }
+
+    static Intent mainActivityIntentFactory(Context context, int userId) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra(MAIN_ACTIVITY_USER_ID, userId);
+        return intent;
     }
 }

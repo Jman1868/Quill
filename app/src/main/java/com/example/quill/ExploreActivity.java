@@ -170,4 +170,8 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
         startActivity(intent);
     }
 
+    static Intent exploreActivityIntentFactory(Context context) {
+        return new Intent(context,ExploreActivity.class);
+    }
+
 }

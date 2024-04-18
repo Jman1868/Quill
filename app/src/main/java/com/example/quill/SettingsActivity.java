@@ -1,5 +1,6 @@
 package com.example.quill;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -87,5 +88,9 @@ public class SettingsActivity extends AppCompatActivity {
             Toast.makeText(this, "Password was successfully changed", Toast.LENGTH_SHORT).show();
             userObserver.removeObservers(this);
         });
+    }
+
+    static Intent settingsActivityIntentFactory(Context context) {
+        return new Intent(context, SettingsActivity.class);
     }
 }

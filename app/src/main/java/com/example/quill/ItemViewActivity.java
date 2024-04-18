@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -138,5 +139,8 @@ public class ItemViewActivity extends AppCompatActivity {
         }
     }
 
+    static Intent itemViewActivityIntentFactory(Context context) {
+        return new Intent(context, ItemViewActivity.class);
+    }
 
 }

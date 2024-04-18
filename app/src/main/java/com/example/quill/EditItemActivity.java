@@ -1,5 +1,6 @@
 package com.example.quill;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -158,5 +159,9 @@ public class EditItemActivity extends AppCompatActivity {
                 binding.editItemPageSportsSelected.setVisibility(View.INVISIBLE);
                 break;
         }
+    }
+
+    static Intent editItemActivityIntentFactory(Context context) {
+        return new Intent(context, EditItemActivity.class);
     }
 }
