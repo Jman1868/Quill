@@ -123,11 +123,6 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
         });
     }
 
-    static Intent exploreIntentFactory(Context context){
-        return new Intent(context, ExploreActivity.class);
-    }
-
-
     void handleNav() {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -170,4 +165,7 @@ public class ExploreActivity extends AppCompatActivity implements QuillRecyclerV
         startActivity(intent);
     }
 
+    static Intent exploreIntentFactory(Context context){
+        return new Intent(context, ExploreActivity.class);
+    }
 }
